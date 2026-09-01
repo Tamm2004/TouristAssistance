@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	<!-- <link rel="stylesheet" type="text/css" href='{%static "css\bootstrap.min.css" %}'> -->
+	<link rel="stylesheet" type="text/css" href='{% static "customcss/form.css" %}'>
+	<!-- <script src='{%static "js/bootstrap.bundle.min.js" %}'></script> -->
+	
+	<div class="row" style="margin-top: 66px;">
+		<div class="col-md-5 image">
+			<img src="{%static 'Photos/login.png' %}" style="padding-top: 5rem;">
+		</div>
+		<div class="col-md-7">
+			<h1 class="animated-text" style="padding-left: 13rem;" ><strong>
+				Login!
+	        <!-- <span style="--i:1">L</span>
+	        <span style="--i:2">O</span>
+	        <span style="--i:3">G</span>
+	        <span style="--i:4">I</span>
+	        <span style="--i:5">N</span> -->
+	        </strong></h1>
+
+	        <div class="box">
+				<h4>AmritPath</h4>
+				<h6>Hey there! Ready to login? We just need a few details from you to get started. Let's do this!</h6>
+
+				<form method="POST" action="">
+				{% csrf_token %}
+
+				<label for="email" class="fw-bold mt-2 d-flex justify-content-between">EMAIL *  <span class="text-danger"> {% if ms == "Invalid email" %} Invalid {% endif %}</span></label>
+				<input type="email" id="email" name="email" placeholder="Enter your email" class="txt form-control"
+				value="{% if ms == 'Invalid password' %} {{email}} {% endif %}"  required><br>
+
+				<label for="password" class="fw-bold  d-flex justify-content-between">PASSWORD * <span class="text-danger">{% if ms == "Invalid password" %} Invalid {% endif %} </span></label>
+				<input type="password" id="password" name="password" placeholder="Enter your password" class="txt form-control" required>
+				<a href="{% url 'forgot' %}" class="d-flex justify-content-end" style="font-weight: bold; color: #561c24;">Forgot Password ?</a>
+
+				<button type="submit" class="button search form-control btn fw-bold mt-3" >Login</button><br><br>
+
+				
+				Don't have an account yet?&nbsp;<a href="{% url 'register' %}" style="font-weight: bold; color: #561c24">Register</a><br>
+
+				</form>
+				
+			</div>
+		</div>
+	</div> 
+{% endblock %}

@@ -1,0 +1,595 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	<link rel="stylesheet" type="text/css" href='{% static "customcss/index.css" %}'>
+	<!-- <link rel="stylesheet" type="text/css" href="{%static 'css\aos.css' %}"> -->
+	<!-- <script src='{%static "js/bootstrap.bundle.min.js" %}'></script> -->
+	 
+
+
+	<section class="hero-section d-flex align-items-center" style="padding-top: 30px;">
+	    <div class="container">
+	    	<div class="row align-items-center">
+	      
+		        <div class="col-md-3 d-flex justify-content-center">
+		        	<div class="img-stack left-stack" data-aos="fade-right">
+		          		<img src="{% static 'Photos/bagh1.jpg' %}" class="img img-tall">
+		          		<img src="{% static 'Photos/ram_tirath1.jpg' %}" class="img img-small">
+		        	</div>
+		    	</div>
+
+			    <div class="col-md-6 text-center" style="padding-top: 120px;" data-aos="zoom-in">
+			        <h1 class="hero-title">
+			          Welcome to <br> Your Perfect Travel <br> Companion
+			        </h1>
+
+			        <p class="hero-text">
+			          Discover destinations, culture and food that make every journey unforgettable.
+			          We’re here to guide you with trusted tips, local insights, and seamless travel assistance.
+			        </p>
+
+			        <a href="{% url 'itinerary' %}">
+			          <button class="btn button search rounded-pill">View Itinerary</button>
+			        </a>
+			    </div>
+
+	      
+			    <div class="col-md-3 d-flex justify-content-center">
+			        <div class="img-stack right-stack" data-aos="fade-left">
+			            <img src="{% static 'Photos/golden 1.jpg' %}" class="img img-tall">
+			            <img src="{% static 'Photos/Durgiana_temple.jpg' %}" class="img img-small img-small-mid">
+			            <img src="{% static 'Photos/heritage1.jpg' %}" class="img img-small">
+			        </div>
+			    </div>
+	    	</div>
+	    </div>
+	</section>
+
+	<section style="padding-top: 200px;" class="mb-5">
+  		<div id="recommendationCarousel" class="carousel slide" data-bs-ride="carousel">
+    		<div class="carousel-inner">
+      			{% for item in recommended_items %}
+      			<div class="carousel-item {% if forloop.first %}active{% endif %}">
+        			<div class="bg-blur" ></div>
+        			<!-- style="background-image:url('/static/photos/black_blur_bg.jpg');" -->
+        			<div class="content">
+          				<a href="{% url item.type id=item.data.id %}"><img class="slider-img" src="{{ item.data.image.url }}"></a>
+				        <div class="center-text">
+				            <h1>Recommendation for you</h1>
+				            <p>Top picks just for you!</p>
+				        </div>
+				        <div class="bottom-title">
+				            <h3>{{ item.data.title }}</h3>
+				        </div>
+        			</div>
+      			</div>
+      			{% endfor %}
+    		</div>
+		    <button class="carousel-control-prev" type="button" data-bs-target="#recommendationCarousel" data-bs-slide="prev">
+		      <span class="carousel-control-prev-icon"></span>
+		    </button>
+
+		    <button class="carousel-control-next" type="button" data-bs-target="#recommendationCarousel" data-bs-slide="next">
+		      <span class="carousel-control-next-icon"></span>
+		    </button>
+  		</div>
+	</section>
+	
+	<section class="mid_section">
+		<div class="container mb-5">
+			<div class="row">
+				<h1 class="mid-section-heading text-center">Places to Visit</h1>
+				
+				<p class="mid-section-text text-center">Golden vibes and stories in every street. Discover a place of profound peace, reflection, and timeless devotion.</p>
+				<a href="{% url 'places_to_visit' %}" class="see-all">Explore all...</a>
+			
+			</div>
+		</div>
+		<div class="container mb-5 ps-5">
+			<div class="row">
+				{% for i in places %}
+				<div class="col-md-4">
+					
+					<div class="card mb-5 p-3 rounded-4 overflow-hidden" style="width: 18rem;" data-aos="zoom-in">
+						<div class="position-relative">
+					        <a href="{% url 'place' id=i.id %}"><img src="{{i.image.url}}" class="card-img-top rounded-4" alt="..." height="200px" width="100%"></a>
+						    <i class="icofont-heart wishlist-icon {% if i.id in wishlist_place_ids %} text-danger {% endif %}" data-id="{{i.id}}" data-type="place"></i>
+	    				</div>
+						<div class="card-body">
+							<h5 class="card-title">{{i.title}}</h5>
+							<div class="d-flex align-items-center justify-content-between pt-3">
+		    
+								<div class="d-flex align-items-center">
+								    <i class="icofont-star fs-5 mt-2 text-warning"></i>
+								    <p class="mb-0 ms-2  pt-2" style="color: white">{{ i.avg_rating|default:0|floatformat:1 }}</p>
+								</div>
+								<div class="pt-2">
+								   	<i class="icofont-link" style="color: white"></i>
+		    						<a href="{% url 'place' id=i.id %}" class="card-button">See more...</a>
+		    					</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+	</section>
+
+	<section class="mid_section">
+		<div class="container mb-5">
+			<div class="row">
+				<h1 class="mid-section-heading text-center">Food to Eat</h1>
+				<p class="mid-section-text text-center">Pure desi ghee, ancient recipes, and unmatched Punjabi hospitality. Dive into a culinary heritage where every bite is seasoned with love and tradition. </p>
+				<a href="{% url 'food_to_eat' %}" class="see-all">Explore all...</a>
+			</div>
+		</div>
+		<div class="container mb-5 ps-5">
+			<div class="row">
+				{% for j in foods %}
+				<div class="col-md-4">
+					
+					<div class="card mb-5 p-3 rounded-4 overflow-hidden" style="width: 18rem;" data-aos="zoom-in">
+						<div class="position-relative">
+					        <a href="{% url 'food' id=j.id %}"><img src="{{j.image.url}}" class="card-img-top rounded-4" alt="..." height="200px" width="100%"></a>
+						    <i class="icofont-heart wishlist-icon {% if j.id in wishlist_food_ids %} text-danger {% endif %}" data-id="{{j.id}}" data-type="food"></i>
+	    				</div>
+						<div class="card-body">
+							<h5 class="card-title">{{j.title}}</h5>
+							<div class="d-flex align-items-center justify-content-between pt-3">
+		    
+								<div class="d-flex align-items-center">
+								    <i class="icofont-star fs-5 mt-2 text-warning"></i>
+								    <p class="mb-0 ms-2 pt-2 " style="color: white">{{ j.avg_rating|default:0|floatformat:1 }}</p>
+								</div>
+								<div class="pt-2">
+								    <i class="icofont-link" style="color: white"></i>
+		    						<a href="{% url 'food' id=j.id %}" class="card-button">See more...</a>
+		    					</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+	</section>
+
+
+	<section class="mid_section">
+		<div class="container mb-5">
+			<div class="row">
+				<h1 class="mid-section-heading text-center">Products to Buy</h1>
+				<p class="mid-section-text text-center">Explore our handpicked selection of Amritsar’s most welcoming places to stay. Rest, recharge, and explore Amritsar with the comfort of a home away from home. </p>
+				<a href="{% url 'products_to_buy' %}" class="see-all">Explore all...</a>
+			</div>
+		</div>
+		<div class="container mb-3 ps-5">
+			<div class="row">
+				{% for m in products %}
+				<div class="col-md-4">
+					
+					<div class="card mb-5 p-3 rounded-4 overflow-hidden" style="width: 18rem;" data-aos="zoom-in">
+						<div class="position-relative">
+					        <a href="{% url 'product' id=m.id %}"><img src="{{m.image.url}}" class="card-img-top rounded-4" alt="..." height="200px" width="100%"></a>
+						    <i class="icofont-heart wishlist-icon {% if m.id in wishlist_product_ids %} text-danger {% endif %}" data-id="{{m.id}}" data-type="product"></i>
+	    				</div>
+						<div class="card-body">
+							<h5 class="card-title">{{m.title}}</h5>
+							<div class="d-flex align-items-center justify-content-between pt-3">
+		    
+								<div class="d-flex align-items-center">
+								    <i class="icofont-star fs-5 mt-2 text-warning"></i>
+								    <p class="mb-0 ms-2  pt-2" style="color: white">{{ m.avg_rating|default:0|floatformat:1 }}</p>
+								</div>
+								<div class="pt-2">
+								   	<i class="icofont-link" style="color: white"></i>
+		    						<a href="{% url 'product' id=m.id %}" class="card-button">See more...</a>
+		    					</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+	</section>
+
+
+
+	<section class="mid_section">
+		<div class="container mb-5">
+			<div class="row">
+				<h1 class="mid-section-heading text-center">Hotels to Stay</h1>
+				<p class="mid-section-text text-center">Explore our handpicked selection of Amritsar’s most welcoming places to stay. Rest, recharge, and explore Amritsar with the comfort of a home away from home. </p>
+				<a href="{% url 'hotels_to_stay' %}" class="see-all">Explore all...</a>
+			</div>
+		</div>
+		<div class="container mb-3 ps-5">
+			<div class="row">
+				{% for k in hotels %}
+				<div class="col-md-4">
+					
+					<div class="card mb-5 p-3 rounded-4 overflow-hidden" style="width: 18rem;" data-aos="zoom-in">
+						<div class="position-relative">
+					        <a href="{% url 'hotel' id=k.id %}"><img src="{{k.image.url}}" class="card-img-top rounded-4" alt="..." height="200px" width="100%"></a>
+						    <i class="icofont-heart wishlist-icon {% if k.id in wishlist_hotel_ids %} text-danger {% endif %}" data-id="{{k.id}}" data-type="hotel"></i>
+	    				</div>
+						<div class="card-body">
+							<h5 class="card-title">{{k.title}}</h5>
+							<div class="d-flex align-items-center justify-content-between pt-3">
+		    
+								<div class="d-flex align-items-center">
+								    <i class="icofont-star fs-5 mt-2 text-warning"></i>
+								    <p class="mb-0 ms-2  pt-2" style="color: white">{{ k.avg_rating|default:0|floatformat:1 }}</p>
+								</div>
+								<div class="pt-2">
+								   	<i class="icofont-link" style="color: white"></i>
+		    						<a href="{% url 'hotel' id=k.id %}" class="card-button">See more...</a>
+		    					</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+	</section>
+
+
+	<section class="mid_section">
+		<div class="container mb-5">
+			<div class="row">
+				<h1 class="mid-section-heading text-center">Restaurants to Explore</h1>
+				
+				<p class="mid-section-text text-center">Savor delightful flavors and unforgettable dining experiences at the city’s most loved restaurants and cafés.</p>
+				<a href="{% url 'restaurants_to_explore' %}" class="see-all">Explore all...</a>
+			
+			</div>
+		</div>
+		<div class="container mb-5 ps-5">
+			<div class="row">
+				{% for i in restaurants %}
+				<div class="col-md-4">
+					
+					<div class="card mb-5 p-3 rounded-4 overflow-hidden" style="width: 18rem;" data-aos="zoom-in">
+						<div class="position-relative">
+					        <a href="{% url 'restaurant' id=i.id %}"><img src="{{i.image.url}}" class="card-img-top rounded-4" alt="..." height="200px" width="100%"></a>
+						    <i class="icofont-heart wishlist-icon {% if i.id in wishlist_restaurant_ids %} text-danger {% endif %}" data-id="{{i.id}}" data-type="restaurant"></i>
+	    				</div>
+						<div class="card-body">
+							<h5 class="card-title">{{i.title}}</h5>
+							<div class="d-flex align-items-center justify-content-between pt-3">
+		    
+								<div class="d-flex align-items-center">
+								    <i class="icofont-star fs-5 mt-2 text-warning"></i>
+								    <p class="mb-0 ms-2  pt-2" style="color: white">{{ i.avg_rating|default:0|floatformat:1 }}</p>
+								</div>
+								<div class="pt-2">
+								   	<i class="icofont-link" style="color: white"></i>
+		    						<a href="{% url 'restaurant' id=i.id %}" class="card-button">See more...</a>
+		    					</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+	</section>
+
+
+
+
+	<section class="review-section mb-5">
+		<div class="container">
+		    <div class="row mb-3" data-aos="zoom-in">
+		        <div class="col-md-12">
+		            <h1 class="text-center pt-3 review-heading">Connect With Our Clients</h1>
+		            <p class="text-center review-text">
+		                This section displays user reviews and ratings, allowing visitors to explore real experiences shared by other users reflecting their <br> satisfaction levels. It helps in building trust and provides valuable insights before making decisions.
+		            </p>
+		         </div>
+		    </div>
+
+
+
+		    <div class="row justify-content-center mb-4" data-aos="zoom-in">
+			    <div class="col-lg-6 col-md-8 text-center rating-summary p-4">
+
+			        
+			        <h2 class="mb-2">{{ average_rating }} / 5</h2>
+
+			        
+			        <div class="mb-2">
+			            {% for i in "12345" %}
+			                {% if forloop.counter <= average_rating %}
+			                    <i class="icofont icofont-star star" style="color: gold;"></i>
+			                {% else %}
+			                    <i class="icofont icofont-star star"></i>
+			                {% endif %}
+			            {% endfor %}
+			        </div>
+
+			        <p style="color: #561c24">Based on {{ total_reviews }} Reviews</p>
+
+			        
+			        {% for star, count in rating_counts.items %}
+			        <div class="d-flex align-items-center mb-2">
+			            <span class="me-2">{{ star }} ★</span>
+
+			            <div class="progress flex-grow-1 me-2" style="height: 8px;">
+			                <div class="progress-bar bg-warning"
+			                     style="width: {% widthratio count total_reviews 100 %}%;">
+			                </div>
+			            </div>
+
+			            <span>{{ count }}</span>
+			        </div>
+			        {% endfor %}
+
+			    </div>
+			</div>
+
+
+
+	    
+	    	<div class="row">
+	        {% for review in reviews %}
+	        <div class="col-lg-6 col-md-6 mb-3">
+	            <div class="review-card pe-5" data-aos="flip-left">
+	            	<div class="review-body d-flex">
+
+            
+			            <div class="profile-img mt-5 ms-3 me-3">
+			            	{% if review.user.photo %}
+			  				<img src="{{ review.user.photo.url }}" class="rounded-circle" width="100" height="100" alt="User">
+							{% else %}
+		  					<img src="{% static 'Photos/profile.webp' %}" class="rounded-circle" width="100" height="100" alt="Default User">
+							{% endif %}
+			                <!-- <img src="{% static 'Photos/profile.webp' %}" class="rounded-circle" width="100" height="100"> -->
+			          
+			            </div>
+
+		            
+			            <div class="review-content mt-4">
+
+			                <h4 class="mb-1">{{ review.email }}</h4>
+			                <small class="time" >
+			                    {{ review.created_at|timesince }} ago
+			                </small>
+			                <div class="mt-2 mb-2">
+			                    {% for i in "12345" %}
+			                        {% if forloop.counter <= review.rating %}
+			                            <i class="icofont icofont-star star" style="color: yellow;"></i>
+			                        {% else %}
+			                            <i class="icofont icofont-star star"></i>
+			                        {% endif %}
+			                    {% endfor %}
+			                </div>
+
+			                <p class="review-text">
+			                    "{{ review.review }}"
+			                </p>
+
+			            </div>
+        			</div>
+		        </div>
+	        </div>
+	        {% endfor %}
+		</div>
+			    
+	</section>
+
+
+	<section class="mid_section">
+		<div class="container mb-5">
+			<div class="row mb-3">
+				<h1 class="mid-section-heading text-center">Frequently asked Questions</h1>
+			</div>
+		
+			<div class="accordion" id="accordionExample">
+			    {% for faq in faqs %}
+			    <div class="accordion-item">
+			        <h2 class="accordion-header">
+			            <button class="accordion-button collapsed" 
+			                type="button" 
+			                data-bs-toggle="collapse" 
+			                data-bs-target="#collapse{{ forloop.counter }}" 
+			                aria-expanded="false" 
+			                aria-controls="collapse{{ forloop.counter }}">
+			                
+			                {{ faq.question }}
+			            </button>
+			        </h2>
+
+			        <div id="collapse{{ forloop.counter }}" 
+			             class="accordion-collapse collapse" 
+			             data-bs-parent="#accordionExample">
+			             
+			            <div class="accordion-body">
+			                {{ faq.answer }}
+			            </div>
+			        </div>
+			    </div>
+			    {% endfor %}
+			</div>
+		</div>
+	</section>
+
+	<section class="mb-5">
+		<h1 class="mid-section-heading text-center mb-3">Weather in Amritsar</h1>
+		<div class="container">
+			<div class="row weather-section rounded-5"
+		    	style="
+			     {% if result and not result.error %}
+			        background: url('{% static 'photos/'|add:result.background %}');
+			        background-size: cover;
+			        background-position: center;
+			        color: white;
+			     {% else %}
+			        background: white;
+			        color: black;
+			     {% endif %}
+		     	">
+
+
+		     	<div id="offline-loader" style="display:none; width:100%; text-align:center; background-color: #e8d8c4; border-radius: 30px;">
+				    <div class="loader"></div>
+				</div>
+
+				
+	            {% if result %}
+
+	            <div class="col-md-8 d-flex" style="padding-top: 20rem; padding-left: 5rem;">
+            	
+            		<h1 style="font-size: 5rem;">{{ result.temperature }}°</h1>
+	            	<div class="pt-4 ms-2">
+		            	<h3 style="font-size: 1.5rem;">{{ result.city }}</h3>
+		            	<p style="font-size: 10px;"><strong></strong> {{ result.current_time }} &nbsp; {{ result.current_date }}</p>
+	            	</div>
+            		<i class="{{ result.icon_class }} pt-4 ms-2" style="font-size: 60px; color: white;"></i>
+            	</div>
+	            <div class="col-md-4 pt-5 pb-5 ps-4 pe-4" style="background-color: rgba(128, 128, 128, 0.5); border-top-right-radius: 30px; border-bottom-right-radius: 30px;" data-aos="fade-left">
+	            	<p><strong>Description : </strong>{{ result.description }}</p>
+	            	<p><strong>Feels Like : </strong>{{ result.feels_like }}°C</p>
+	            	<p><strong>Wind Speed : </strong> {{ result.wind_speed }} km/h</p>
+					<p><strong>Wind Direction : </strong> {{ result.wind_direction }} ({{ result.wind_degree }}°)</p>
+					<p><strong>Min Temp : </strong> {{ result.min_temp }}°C </p>
+			       	<p><strong>Max Temp : </strong> {{ result.max_temp }}°C</p>
+			       	<hr style="color: white;">
+			       	<p><strong>Sunrise : </strong> {{ result.sunrise }}</p>
+			    	<p><strong>Sunset : </strong> {{ result.sunset }}</p>
+	            </div>
+	            {% endif %}
+	            {% if result.error %}
+				    <div class="text-center mt-5">
+				        <h3 style="color:#561c24;">Weather not available 🌐❌</h3>
+				        <p>Please check your internet connection</p>
+				    </div>
+				{% endif %}
+        	</div>
+    	</div>
+	</section>
+
+	
+	<section class="map-section pb-4">
+
+	    <h1 class="mid-section-heading text-center pt-4">Map Of Amritsar</h1>
+
+	    <div class="map-container">
+
+	       
+	        <center>
+	        	<div class="map-search-box">
+	        		<div class="search-wrapper">
+			        	<i class="icofont-ui-search search-icon"></i>
+			            <input type="text" id="location-input" placeholder="Search places in Amritsar...">
+		        	</div>
+		            <button onclick="searchLocation()">
+		                Search
+		            </button>
+
+	        	</div>
+	    	</center>
+
+	       	<div class="map">
+		        <iframe class="map-frame" id="map-frame"
+		            src="https://www.google.com/maps?q=Amritsar&output=embed"
+		            width="100%"
+		            height="500"
+		            style="border:0;">
+		        </iframe>
+	    	</div>
+
+	    </div>
+
+	</section>
+
+	<script>
+
+		function searchLocation(){
+
+		    let location = document.getElementById("location-input").value;
+
+		    let map = document.getElementById("map-frame");
+
+		    map.src = "https://www.google.com/maps?q=" + location + " Amritsar&output=embed";
+
+		}
+
+		document.querySelectorAll(".wishlist-icon").forEach(icon => {
+
+	    icon.addEventListener("click", function(){
+
+	        const itemId = this.dataset.id
+        	const itemType = this.dataset.type
+        	const iconElement = this
+
+	        fetch("/toggle-wishlist/",{
+	            method:"POST",
+	            headers:{
+	                "Content-Type":"application/x-www-form-urlencoded",
+	                "X-CSRFToken":"{{ csrf_token }}"
+	            },
+	            body:"id=" + itemId + "&type=" + itemType
+	        })
+	        .then(response => response.json())
+	        .then(data => {
+
+	            if(data.status === "added"){
+	                iconElement.classList.add("text-danger")
+	            }
+
+	            if(data.status === "removed"){
+	                iconElement.classList.remove("text-danger")
+	            }
+
+	        })
+
+	    })
+
+	})
+
+	window.addEventListener("pageshow", function(event) {
+        if (event.persisted || performance.getEntriesByType("navigation")[0].type === "back_forward") {
+            window.location.reload();
+        }
+    });
+
+
+
+	</script>
+
+	<script>
+		function checkInternet() {
+		    var loader = document.getElementById("offline-loader");
+
+		    if (!navigator.onLine) {
+		        loader.style.display = "block";
+		    } else {
+		        loader.style.display = "none";
+		    }
+		}
+
+		window.onload = checkInternet;
+		window.addEventListener("offline", checkInternet);
+		window.addEventListener("online", checkInternet);
+	</script>
+
+	<!-- <script src='{%static "js\aos.js" %}'></script> 
+	<script>
+	   AOS.init()
+	</script> -->
+
+{% endblock %}

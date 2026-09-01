@@ -1,0 +1,379 @@
+.hero-heading{
+	color: #561c24;
+	font-family: 'Brush Script MT', 'Brush Script Std', cursive;
+	font-size: 4rem;
+	letter-spacing: 0.5rem;
+}
+
+.hero-text{
+	color: #561c24;
+	padding: 0px 9rem;
+  text-align: justify;
+}
+.badges{
+	padding: 0px 9rem;
+}
+.badge{
+	color: #b0625a;
+	border: 1px solid #b0625a;
+	padding: 0.5rem 1rem;
+	box-shadow: 3px 3px 3px #b0625a;
+	margin-right: 0.5rem; 
+	margin-top: 1rem;
+	
+}
+
+.mid_section{
+  overflow-x: hidden;
+}
+
+.mid-section-heading{
+  color: #561c24;
+  font-family: 'Brush Script MT', 'Brush Script Std', cursive;
+  font-size: 4rem;
+  letter-spacing: 0.5rem;
+  word-spacing: 0.3rem;
+}
+
+/*.mid-section-text p{
+  color: #b0625a !important;
+}
+
+.mid-section-text h4{
+  color: #b0625a !important;
+}*/
+.card{
+  background-color: #b0625a;
+  color: white ;
+  height: 350px;
+}
+.card-body .card-title{
+  color: white;
+}
+.card-button{
+  color: white ;
+}
+.card-button:hover{
+  font-weight: bold;
+}
+.wishlist-icon {
+    position: absolute;
+    top: 40px;
+    right: 12px;
+    font-size: 30px;
+    color: white;
+    padding: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-shadow: 0 0px 6px grey;
+}
+.wishlist-icon-card{
+  top:15px;
+  font-size: 25px;
+}
+
+
+.wishlist-icon:hover {
+    color: red;
+}
+
+.overall_rating{
+  position: absolute;
+  top: 10px;
+  font-size: 30px;
+  color: #561c24;
+}
+
+
+
+.carousel-image{
+  /*object-fit: cover;*/
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+}
+
+.carousel-control-prev,
+.carousel-control-next{
+    opacity: 1;
+}
+.carousel-indicators [data-bs-target]{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background-color:white;   
+    opacity:0.6;
+    margin:0 5px;
+    border:none;
+}
+
+
+.carousel-indicators .active{
+    opacity:1;
+    background-color:white;
+}
+
+
+.review-text{
+  color: #e8d8c4 ;
+  text-align: justify;
+}
+
+.review-card{
+  background-color: #b0625a ;
+  color: white ;
+  height: 200px;
+  border: 1px solid #561c24 ;
+  box-shadow:5px 5px 5px #b0625a ;
+  border-radius: 20px;
+}
+
+.time{
+  color: white;
+}
+
+.box{
+  margin-top: 1rem;
+  margin-bottom: 5rem;
+  color: #561c24;
+  width: 100%;
+  /*padding-left: 1rem;*/
+}
+
+.button{
+  border-color: #561c24 !important;
+  box-shadow:2px 2px 2px #b0625a !important;
+}
+
+.button:hover{
+  transform: translateY(-3PX) !important;
+  transition: all ease 0.3s !important;
+}
+
+.txt{
+  background-color: #561c24 ;
+  color: white;
+  border-color:#b0625a !important ; 
+  box-shadow: 2px 2px 2px #b0625a !important;
+}
+.txt::placeholder{
+  background-color: #561c24 !important;
+  color:white !important;
+}
+.txt:focus {
+    background-color: #561c24 !important;
+    color: white !important;
+}
+input.form-control:-webkit-autofill,
+input.form-control:-webkit-autofill:hover,
+input.form-control:-webkit-autofill:focus,
+input.form-control:-webkit-autofill:active {
+    -webkit-text-fill-color: #ffffff !important;
+    caret-color: #ffffff;
+    transition: background-color 9999s ease-in-out 0s;
+}
+
+
+.star-rating {
+    display: flex;
+    gap: 10px;
+}
+
+.star-rating .star {
+    font-size: 45px;
+    color: white;
+    cursor: pointer;
+    text-shadow:
+        2px 0 gold,
+        -2px 0 gold,
+        0 2px gold,
+        0 -2px gold;
+
+    transition: 0.2s ease;
+}
+
+.star-rating .star.filled {
+    color: gold;
+}
+
+
+
+
+
+
+.table-responsive{
+  border: 1px solid #561c24;
+  box-shadow: 0px 0px 4px #561c24;
+  border-radius: 20px;
+}
+.custom-table {
+    border-radius: 20px;
+    overflow: hidden;
+    
+}
+.custom-table thead tr th {
+    background-color: #561c24;
+    color: white;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+.custom-table tbody tr td {
+    
+    color: #561c24;
+    /*transition: 0.3s ease;*/
+}
+.shop-img {
+    width: 100px;
+    height: 80px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    
+}
+.shop-title {
+    font-size: 18px;
+    letter-spacing: 0.5px;
+}
+.theme-btn {
+    background-color: #561c24;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px #561c24;
+    /*transition: 0.3s;*/
+}
+
+.theme-btn:hover {
+    background-color: white;
+    color: #561c24;
+    border: 1px solid #561c24;
+    /*transform: translateY(-2px);*/
+}
+.theme-btn-outline {
+    background-color: transparent;
+    color: #561c24;
+    border: 1px solid white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    /*transition: 0.3s;*/
+}
+.theme-btn-outline:hover {
+    /*transform: translateY(-2px);*/
+    font-weight: bold;   
+}
+
+.custom-table td,
+.custom-table th {
+    border: none !important;
+}
+
+
+
+.card-img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px 15px 0 0;
+}
+/*
+.branch-card{
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: 0.3s;
+    height: 100%;
+}
+
+.branch-card:hover{
+    transform: translateY(-5px);
+}
+
+.branch-card-img{
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.branch-card-title{
+    font-size: 22px;
+    font-weight: 700;
+    color: #222;
+}
+
+.branch-card-address{
+    color: #666;
+    min-height: 60px;
+}
+
+.branch-location-btn2{
+    background: #c89b3c;
+    color: white;
+    border-radius: 10px;
+    padding: 8px 18px;
+    border: none;
+    font-weight: 600;
+}
+
+.branch-location-btn2:hover{
+    background: #a67c28;
+    color: white;
+}*/
+
+
+.branch-card{
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 10px;
+    transition: 0.3s;
+    border : 1px solid #561c24;
+    box-shadow: 5px 5px 10px #561c24;
+}
+
+.branch-card:hover{
+    transform: translateY(-6px);
+}
+
+.card-img{
+    width: 100%;
+    height: 180px;
+    /*object-fit: cover;*/
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 15px;
+    border-radius: 30px;
+}
+
+.card-body{
+    padding: 15px;
+    text-align: center;
+}
+
+.title{
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #561c24;
+}
+
+.location-btn{
+    display: inline-block;
+    background: #561c24;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.location-btn:hover{
+    background: white;
+    border: 1px solid #561c24;
+    color: #561c24;
+    font-weight: bold;
+  }

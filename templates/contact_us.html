@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	<!-- <link rel="stylesheet" type="text/css" href='{%static "css\bootstrap.min.css" %}'> -->
+	<link rel="stylesheet" type="text/css" href='{% static "customcss/form.css" %}'>
+  	<link rel="stylesheet" type="text/css" href='{%static "icofont\icofont.min.css" %}'>
+  	<!-- <script src='{%static "js/bootstrap.bundle.min.js" %}'></script> -->
+	<style type="text/css">
+		.heading{
+			color: #561c24;
+			font-weight: bold;
+			text-align: center;
+		}
+
+		.icon-contact{
+			background-color: #561c24;
+			color: white;
+			width: 40px;
+		    height: 40px;
+			border-radius: 50%;
+			padding: 8px;
+			display: flex;
+			cursor: pointer;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.d-flex{
+			padding-left: 9rem;
+		}
+	</style>
+	<div class="row" style="margin-top: 66px;">
+		<div class="col-md-5 left">
+			<div class="image">
+				<img src="{%static 'Photos/image15.png' %}" style="padding-top: 3rem;">
+			</div>
+			<div>
+				<h3 class="heading pb-4">Let's get in touch<br> with us!</h3>
+			</div>
+			<div class="d-flex mb-4">
+				<i class="icofont-email icon-contact me-3 mt-1"></i>
+				<b><span>tamannabawa23@gmail.com<br>chahatbawa23@gmail.com</span></b>
+			</div>
+			<div class="d-flex">
+				<i class="icofont-phone icon-contact me-3 mt-1"></i>
+				<b><span>91-7986821560<br>91-8264821560</span></b>
+			</div>
+		</div>
+		<div class="col-md-7">
+			<h1 class="animated-text" style="padding-left: 8rem;"><strong>
+	        Contact Us!
+	        </strong></h1>
+
+	        <div class="box">
+				<form method="POST" action="">
+				{% csrf_token %}
+				{% if message %}
+				<p style="font-weight: bold; color: #561c24"> Message successfully submitted </p>
+				{% endif %}
+				<label for="name" class="fw-bold mt-2">Name *</label><br>
+				<input type="text" id="name" name="name" placeholder="Enter your Name" class="txt form-control" required><br>
+
+				<label for="email" class="fw-bold mt-2">EMAIL *</label><br>
+				<input type="email" id="email" name="email" placeholder="Enter your email" class="txt form-control" required><br>
+
+				<label for="review" class="fw-bold mt-2">Message *</label><br>
+				<textarea type="text" id="review" name="message" placeholder="Enter your Query" class="txt form-control" rows="5" required></textarea><br>
+
+				<button type="submit" class="button search form-control btn fw-bold mt-3" >Submit</button><br><br>
+
+				</form>
+				
+			</div>
+		</div>
+	</div> 
+
+
+{% endblock %}

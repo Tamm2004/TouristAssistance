@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	<link rel="stylesheet" type="text/css" href='{% static "customcss/about_us.css" %}'>
+	<!-- <script src='{%static "js/bootstrap.bundle.min.js" %}'></script> -->
+	
+	
+	<div class="about-head text-center pt-5">
+		<h1 class="about-head-heading">About Amrit Path</h1>
+		<div class="about-head-text">
+			<a href="{% url 'index' %}" >Home</a>&nbsp;<span>/</span>
+			<a href="{% url 'contact_us' %}">Contact Us</a>
+		</div>
+	</div>
+<!-- <div class="heading"><h1 class="text-center pt-5 pb-5">Tourist Assistance Website <br>for the Tourist</h1></div> -->
+	<div class="row pt-5 pb-4 ps-5 text">
+		<div class="col-md-8" data-aos="zoom-in">
+			<p>Amrit Path is a dedicated tourist assistance platform designed to help visitors explore the rich culture, 
+			heritage, food, and traditions of Amritsar — popularly known as Guru Ki Nagri.
+			Our goal is to provide tourists with accurate, reliable, and well-organized information about famous places, 
+			historical monuments, traditional markets, restaurants, hotels, and local products — all in one place.
+			We aim to make every visitor’s journey smooth, informed, and memorable.</p>
+		</div>
+		<div class="col-md-4">
+			<center><img src="{%static 'photos/logo.jpeg' %}" height="150px" weight="100%"></center>
+		</div>
+	</div>
+	<div class="container">
+		<div>
+			<h3 class="heading text-center pt-5"><i class="icofont-dart me-2"></i>Our Mission</h3>
+		</div>
+		<div class="row mt-5">
+			<div class="col-md-1"></div>
+			<div class="col-md-5 mission-text p-4 me-3 rounded-pill text-center" data-aos="fade-down-right">
+				<p>To create a centralized digital guide for tourists visiting Amritsar.</p>
+			</div>
+			<div class="col-md-5 mission-text p-4 ms-3 rounded-pill text-center" data-aos="fade-down-left">
+				<p>To support local businesses by giving them a platform to reach more customers.</p>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+		<div class="row mt-5">
+			<div class="col-md-1"></div>
+			<div class="col-md-5 mission-text p-4 me-3 rounded-pill text-center" data-aos="fade-up-right">
+				<p>To reduce dependency on expensive tourist guides through digital assistance.</p>
+			</div>
+			<div class="col-md-5 mission-text p-4 ms-3 rounded-pill text-center" data-aos="fade-up-left">
+				<p>To promote local culture, heritage, and traditions.</p>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	</div>
+
+	<div class="mt-5">
+		<div class="row our-vision">
+			<div class="col-md-5"></div>
+			<div class="col-md-6" data-aos="fade-left">
+				<h3 class="heading text-center pt-4"><i class="icofont-eye-alt me-2"></i>Our Vision</h3>
+				<p class="vision-text mt-4">Our vision is to expand this platform beyond Amritsar and develop it into a comprehensive, multi-city tourist assistance system across India. We aspire to create a smart and reliable digital companion that offers personalized recommendations, real-time assistance, and authentic local insights. By combining technology with cultural awareness, we aim to promote sustainable tourism, support small businesses, and enhance the overall travel experience for future generations.</p>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	</div>
+
+
+	<div class="what-we-provide mt-5 pb-5">
+		<div>
+			<h3 class="text-center what-we-provide-heading pt-4"><i class="icofont-help-robot me-2"></i>How We Help!</h3>
+		</div>
+		<div class="row mt-4">
+		<div class="col-md-1"></div>
+		<div class="col-md-10">
+			<center><div class="row mb-5">
+				
+				<div class="col-md-4"><div class="what-we-provide-text p-3" data-aos="flip-left"><p>Detailed information about famous places and monuments.</p></div></div>
+				<div class="col-md-4"><div class="what-we-provide-text p-3" data-aos="flip-left"><p>Authentic food recommendations with locations.</p></div></div>
+				<div class="col-md-4"><div class="what-we-provide-text p-4" data-aos="flip-left"><p>Trusted hotel and stay options.</p></div></div>
+				
+			</div></center>
+			<center><div class="row">
+				
+				<div class="col-md-4 "><div class="what-we-provide-text p-3" data-aos="flip-left"><p>Traditional shopping guidance and souvenir suggestions.</p></div></div>
+				<div class="col-md-4"><div class="what-we-provide-text p-3" data-aos="flip-left"><p>Ratings and reviews for better decision-making.</p></div></div>
+				<div class="col-md-4"><div class="what-we-provide-text p-3" data-aos="flip-left"><p>AI-based chatbot and smart recommendations.</p></div></div>
+				
+			</div></center>
+		</div>
+		<div class="col-md-1"></div>
+		</div>
+	</div>
+
+	<div class="pb-5">
+		<div>
+			<h3 class="heading text-center mt-5"><i class="icofont-workers-group me-2"></i>Meet Our Team</h3>
+			<p class="heading-text text-center mt-3">This project is developed as part of an academic initiative with the aim of combining technology and tourism.</p>
+
+		</div>
+		<div class="row" style="padding-left: 8rem;">
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				<div class="card p-3" style="width: 18rem;" data-aos="fade-right">
+	  				<img src="{%static 'photos/chahat.jpeg' %}" class="card-img-top" alt="..." height="250px">
+	  				<div class="card-body">
+	    				<h5 class="card-title"><i class="icofont-girl-alt me-2"></i>Chahat</h5>
+	    				<p class="card-text"><i class="icofont-code-alt me-2 fw-bold"></i>Project Developer</p> 
+	    				<a href="#" class="card-button"><i class="icofont-linkedin me-2"></i>LinkedIn...</a>
+	  				</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card p-3" style="width: 18rem;" data-aos="fade-left">
+	  				<img src="{%static 'photos/tamanna.jpeg' %}" class="card-img-top" alt="..." height="250px">
+	  				<div class="card-body">
+	    				<h5 class="card-title"><i class="icofont-woman-in-glasses me-2"></i>Tamanna Bawa</h5>
+	    				<p class="card-text"><i class="icofont-code-alt me-2 fw-bold"></i>Project Developer</p> 
+	    				<a href="#" class="card-button"><i class="icofont-linkedin me-2"></i>LinkedIn...</a>
+	  				</div>
+				</div>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+	</div>
+
+
+	<div class="container" data-aos="zoom-in">
+		<div>
+			<h3 class="heading text-center pt-4"><i class="icofont-touch"></i>Get in Touch!</h3>
+		</div>
+		<div>
+			<p class="get-in-touch-text text-center">We would love to hear your feedback, suggestions, or partnership ideas.</p>
+			<p class="get-in-touch-text text-center"><i class="icofont-hand-right"></i><a href="{% url 'contact_us' %}"> Visit our Contact Us</a> page to reach out to us.</p><br><br>
+		</div>	
+	</div>
+
+	<div class="container">
+		<center><div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-10 ending ps-5 pe-5 pt-2 pb-2">
+				<p>“This platform not only assists tourists but also empowers small local businesses 
+				by providing them digital visibility.”</p>
+			</div>
+			<div class="col-md-1"></div>
+		</div></center>
+	</div>
+
+{% endblock %}
+
+

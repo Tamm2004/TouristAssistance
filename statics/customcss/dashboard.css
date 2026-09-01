@@ -1,0 +1,426 @@
+.card{
+    border-color: #561c24 !important;
+    box-shadow: 5px 5px 5px #561c24;
+    cursor:pointer;
+}
+
+.card:hover{
+    transform: translateY(-5PX) !important;
+    transition: all ease 0.3s !important;
+}
+.card-title{
+    color: #561c24;
+    font-weight: bold;
+}
+.card-text{
+    color: #561c24;
+    text-align: justify;
+}
+
+
+.add-business-card {
+	width: 700px;
+	background-color: #b0625a;
+	border-radius: 20px;
+	box-shadow: 5px 5px 10px #561c24;
+	color: white;
+}
+.section-heading {
+	color: white;
+	margin: 10px 0;
+	font-weight: bold;
+	letter-spacing: 1px;
+}
+.dropdown{
+	background-color: #561c24;
+    border: 1px solid white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px white;
+}
+.dropdown .txt{
+	color: white;
+}
+.custom-dropdown {
+    background-color: #561c24;  
+}
+
+.custom-dropdown .dropdown-item {
+    color: white;
+}
+
+.custom-dropdown .dropdown-item:hover {
+    background-color: #b0625a;
+    color: white;
+    border-radius: 10px;
+}
+.theme-btn{
+	background-color: white;
+	color: #561c24;
+	border: 1px solid #561c24;
+	box-shadow: 4px 4px 4px #561c24;
+}
+.theme-btn:hover{
+	color: white;
+	background-color: #561c24;
+}
+
+
+.form-control{
+	border:1px solid #561c24;
+}
+.form-control:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    color: #561c24;
+
+}
+.txt::placeholder {
+    color: #561c24;
+}
+.txt:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: 1px solid #561c24 !important;
+}
+
+/* For textarea */
+textarea:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* For file input (important) */
+input[type="file"]:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: 1px solid #561c24 !important;
+}
+/*
+.preview-img-box {
+    position: relative;
+    width: 100px;
+    height: 80px;
+}
+
+.preview-img-box img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #b0625a;
+}
+
+
+.remove-btn {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    cursor: pointer;
+}*/
+
+#preview_container {
+    max-height: 200px;     
+    overflow-y: auto;      
+    padding: 5px;
+}
+
+.preview-img-box {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.preview-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.remove-btn {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #561c24;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    font-size: 8px;
+}
+
+
+.hero-text{
+    color: #561c24;
+    font-family: 'Brush Script MT', 'Brush Script Std', cursive;
+    font-size: 4rem;
+    letter-spacing: 0.5rem;
+    word-spacing: 0.3rem;
+}
+
+.shop-card {
+    background: #e8d8c4;
+    border-radius: 12px;
+    padding: 15px;
+    border: 1px solid #e8d8c4;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.shop-header {
+    background-color: #561c24;
+    padding: 12px;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 5px 5px 5px #b0625a;
+}
+
+.btn1{
+    border: 1px solid white;
+    color: white;
+    box-shadow: 0px 0px 3px white;
+    background-color: #561c24;
+}
+.btn1:hover{
+    border: 1px solid white;
+    font-weight: bold;
+    background-color: #561c24;
+    color: white;
+}
+
+.btn2{
+    background-color: #b0625a;
+    color: white;  
+    padding: 5px 30px;
+    border: 1px solid #561c24;
+}
+.btn2:hover{
+    font-weight: bold;
+    background-color: white;
+    color: #561c24;
+    border: 1px solid #561c24;
+}
+
+.btn3{
+    color: #561c24;
+    background-color: white;
+
+}
+
+.btn3:hover{
+    background-color: #b0625a;
+    color: white; 
+}
+
+.btn4{
+    color: white;
+    background-color: #561c24;
+    box-shadow: 0px 0px 2px #561c24;
+    font-weight: bold;
+}
+
+.btn4:hover{
+    background-color: #b0625a;
+    color: white;
+}
+.shop-img {
+    width: 100px;
+    height: 70px;
+    border-radius: 10px;
+    /*object-fit: cover;*/
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.shop-title{
+    font-size: 3rem;
+    font-family: 'Brush Script MT', 'Brush Script Std', cursive;
+    letter-spacing: 0.5rem;
+    word-spacing: 0.3rem;
+}
+
+.item-section h6 {
+    color: #561c24;
+    font-weight: bold;
+}
+
+
+.scroll-row {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    padding-bottom: 5px;
+}
+
+.scroll-row::-webkit-scrollbar {
+    height: 6px;
+}
+
+.scroll-row::-webkit-scrollbar-thumb {
+    background: #b0625a;
+    border-radius: 10px;
+}
+
+
+.item-card {
+    min-width: 140px;
+    background: #fdf8f6;
+    padding: 8px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 5px 5px 5px #561c24;
+}
+
+.item-card img {
+    width: 100%;
+    height: 80px;
+    border-radius: 8px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.item-card p {
+    font-size: 13px;
+    margin: 5px 0;
+    color: #561c24;
+    font-weight: bold;
+}
+
+
+
+/* ================= HOTEL ================= */
+
+.hotel-card{
+    background: #e8d8c4;
+    border-radius: 12px;
+    padding: 15px;
+    border: 1px solid #e8d8c4;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.hotel-header{
+    background-color: #561c24;
+    padding: 12px;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 5px 5px 5px #b0625a;
+}
+
+.hotel-img{
+    width: 100px;
+    height: 70px;
+    border-radius: 10px;
+    /*object-fit: cover;*/
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hotel-title{
+    font-size: 3rem;
+    font-family: 'Brush Script MT', 'Brush Script Std', cursive;
+    letter-spacing: 0.5rem;
+    word-spacing: 0.3rem;
+}
+
+/* BRANCHES */
+.branch-scroll{
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    padding-bottom: 5px;
+}
+.hotel-branch-section h6{
+    color: #561c24;
+    font-weight: bold;
+}
+.hotel-branch-card{
+     min-width: 140px;
+    background: #fdf8f6;
+    padding: 8px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 5px 5px 5px #561c24;
+}
+
+
+/* ================= RESTAURANT ================= */
+
+.restaurant-card{
+    background: #e8d8c4;
+    border-radius: 12px;
+    padding: 15px;
+    border: 1px solid #e8d8c4;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.restaurant-header{
+    background-color: #561c24;
+    padding: 12px;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 5px 5px 5px #b0625a;
+}
+
+.restaurant-img{
+    width: 100px;
+    height: 70px;
+    border-radius: 10px;
+    /*object-fit: cover;*/
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.restaurant-title{
+    font-size: 3rem;
+    font-family: 'Brush Script MT', 'Brush Script Std', cursive;
+    letter-spacing: 0.5rem;
+    word-spacing: 0.3rem;
+}
+
+.restaurant-branch-card{
+    min-width: 140px;
+    background: #fdf8f6;
+    padding: 8px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 5px 5px 5px #561c24;
+}
+.restaurant-branch-section h6{
+    color: #561c24;
+    font-weight: bold;
+}
+.branch-img{
+   width: 100%;
+    height: 80px;
+    border-radius: 8px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.branch-title{
+    font-size: 13px;
+    margin: 5px 0;
+    color: #561c24;
+    font-weight: bold;
+}
+
+
+
+/*.hotel-card,
+.restaurant-card {
+    width: 100%;
+    display: block;
+    clear: both;
+}*/

@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	<link rel="stylesheet" type="text/css" href='{% static "customcss/places_to_visit.css" %}'>
+	<!-- <script src='{%static "js/bootstrap.bundle.min.js" %}'></script> -->
+	
+
+	<div class="row hero-section mb-5" style="padding-top: 66px;">
+		<div>
+			<h1 class="hero-heading text-center mt-3">Products to Buy</h1>
+			<p class="hero-text">Take home a piece of the city by exploring its most popular and meaningful products. From traditional handicrafts and cultural souvenirs to locally made specialties, each item reflects the artistry and heritage of the region. Whether you're looking for memorable gifts or something special for yourself, these products offer a perfect blend of authenticity and quality. Discover unique finds that let you carry the essence of your journey with you.</p>
+		</div>
+		
+		<div class="text-center badges">
+			{% for i in res %}
+			<span class="badge rounded-pill">{{i.title}}</span>
+			{% endfor %}
+		</div>
+
+	</div>
+
+	
+
+
+	<section class="mid_section">
+		<div class="container mb-5">
+			<div class="row">
+				<h1 class="mid-section-heading">Famous Products</h1>
+			</div>
+		</div>
+
+		<div class="container mb-5 ps-5">
+			<div class="row justify-content-center">
+				{% for i in res %}
+				<div class="col-md-4">
+					
+					<div class="card mb-5 p-3 rounded-4 overflow-hidden" style="width: 18rem;">
+						<div class="position-relative">
+					        <a href="{% url 'product' id=i.id %}"><img src="{{i.image.url}}" class="card-img-top rounded-4" alt="..." height="200px" width="100%"></a>
+						    <i class="icofont-heart wishlist-icon wishlist-icon-card{% if i.id in wishlist_ids %} text-danger {% endif %}" data-id="{{i.id}}" data-type="product" ></i>
+	    				</div>
+						<div class="card-body">
+							<h5 class="card-title">{{i.title}}</h5>
+							<div class="d-flex align-items-center justify-content-between pt-3">
+		    
+								<div class="d-flex align-items-center">
+								    <i class="icofont-star fs-5 mt-2 text-warning"></i>
+								    <p class="mb-0 ms-2 pt-2" style="color: white">
+								        {{ i.avg_rating|default:"0"|floatformat:1 }}
+								    </p>
+								</div>
+								<div class="pt-2">
+								   	<i class="icofont-link" style="color: white"></i>
+		    						<a href="{% url 'product' id=i.id %}" class="card-button">See more...</a>
+		    					</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+
+	
+
+	<script>
+
+		document.querySelectorAll(".wishlist-icon").forEach(icon => {
+
+		    icon.addEventListener("click", function(){
+
+		        const itemId = this.dataset.id
+        		const itemType = this.dataset.type
+        		const iconElement = this
+
+		        fetch("/toggle-wishlist/",{
+		            method:"POST",
+		            headers:{
+		                "Content-Type":"application/x-www-form-urlencoded",
+		                "X-CSRFToken":"{{ csrf_token }}"
+		            },
+		            body:"id=" + itemId + "&type=" + itemType
+		        })
+		        .then(response => response.json())
+		        .then(data => {
+
+		            if(data.status === "added"){
+		                iconElement.classList.add("text-danger")
+		            }
+
+		            if(data.status === "removed"){
+		                iconElement.classList.remove("text-danger")
+		            }
+
+		        })
+
+		    })
+
+		})
+
+		window.addEventListener("pageshow", function(event) {
+        if (event.persisted || performance.getEntriesByType("navigation")[0].type === "back_forward") {
+            window.location.reload();
+        }
+    });
+
+		</script>
+
+{% endblock %}

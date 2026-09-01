@@ -1,0 +1,240 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href='{% static "customcss/edit_profile.css" %}'>
+
+<section style="margin-top: 120px;">
+<div class="container">
+    <form method="POST" enctype="multipart/form-data">
+      	{% csrf_token %}
+
+      	<div class="higher-div"></div>
+
+      	<!-- Top Section -->
+      	<div class="middle-div row">
+        	<div class="col-md-1 p-4">
+
+	          	{% if user.photo %}
+	            	<img src="{{ user.photo.url }}" class="rounded-circle" width="60" height="60">
+	          	{% else %}
+	            	<img src="{% static 'photos/profile.webp' %}" class="rounded-circle" width="60" height="60">
+	          	{% endif %}
+
+        	</div>
+
+	        <div class="col-md-9 info ps-2">
+	          	<h5>{{ user.firstname|default:"User" }} {% if user.lastname %} {{ user.lastname }} {% endif %}</h5>
+	          	<p>{{ user.email }}</p>
+	        </div>
+
+	        <div class="col-md-2 p-5">
+	          	<button type="submit" class="button form-control btn fw-bold">Save</button>
+	        </div>
+      	</div>
+
+      	<!-- Form Fields -->
+      	<div class="row p-3 data">
+        	<!-- LEFT -->
+	        <div class="col-md-6">
+
+	          	<label class="fw-bold mt-2">First Name</label>
+	          	<input type="text" name="firstname" class="txt form-control"
+	                 value="{{ user.firstname}}" readonly>
+
+	          	<label class="fw-bold mt-2">Email</label>
+	          	<input type="email" name="email" class="txt form-control"
+	                 value="{{ user.email}}" readonly>
+
+	          	<label class="fw-bold mt-2">Contact</label>
+	          	<input type="tel" name="contact" class="txt form-control"
+	                 pattern="[6-9]{1}[0-9]{9}"
+	                 value="{{ user.contact|default:'' }}">
+
+	          	<label class="fw-bold mt-2">Alternate Contact</label>
+	          	<input type="tel" name="alternate_contact" class="txt form-control"
+	                 pattern="[6-9]{1}[0-9]{9}"
+	                 value="{{ user.alternate_contact|default:'' }}">
+
+	          	<label class="fw-bold mt-2">Profile Photo</label>
+	          	<input type="file" name="photo" class="txt form-control">
+
+	          	<label class="fw-bold mt-2">Address</label>
+	          	<textarea name="address" class="txt form-control" rows="4">{{ user.address|default:'' }}</textarea>
+
+	        </div>
+
+        	<!-- RIGHT -->
+	        <div class="col-md-6">
+
+	          	<label class="fw-bold mt-2">Last Name</label>
+	          	<input type="text" name="lastname" class="txt form-control"
+	                 value="{{ user.lastname|default:'' }}">
+
+	         	<label class="fw-bold mt-2">Birthday</label>
+	          	<input type="date" name="birthday" class="txt form-control"
+	                 value="{{ user.birthday|date:'Y-m-d' }}">
+
+	          	<label class="fw-bold mt-2">Age</label>
+	          	<input type="number" name="age" class="txt form-control"
+	                 min="1" max="120"
+	                 value="{{ user.age|default:'' }}">
+
+	          	<label class="fw-bold mt-2">Social Link</label>
+	          	<input type="url" name="social_link" class="txt form-control"
+	                 value="{{ user.social_link|default:'' }}">
+
+	          	<!-- Gender -->
+	          	<label class="fw-bold mt-2 mb-1">Gender</label><br>
+
+	          	<input type="radio" name="gender" value="Male"
+	            {% if user.gender == "Male" %}checked{% endif %}> <label for="male" class="fw-bold">Male</label>
+
+	          	<input type="radio" name="gender" value="Female"
+	            {% if user.gender == "Female" %}checked{% endif %}> <label for="female" class="fw-bold">Female</label>
+
+	          	<input type="radio" name="gender" value="Other"
+	            {% if user.gender == "Other" %}checked{% endif %}> <label for="other" class="fw-bold">Other</label>
+
+	          	<br><br>
+	          	<label class="fw-bold ">About You</label>
+	          	<textarea name="bio" class="txt form-control" rows="4">{{ user.bio|default:'' }}</textarea>
+
+	        </div>
+      	</div>
+
+      	<!-- Checkbox -->
+	    <div class="row mb-5">
+	        <div class="col-md-12 bottom-div">
+
+	          	<h5 class="fw-bold mt-2">Notifications</h5>
+
+	          	<input type="checkbox" name="newsletter" value="yes"
+	            {% if user.newsletter %}checked{% endif %}>
+	          	<label class="ms-2">Subscribe to Newsletter</label>
+
+	        </div>
+	    </div>
+
+    </form>
+</div>
+</section>
+
+{% endblock %}
+
+
+<!-- 
+
+	<link rel="stylesheet" type="text/css" href='{% static "customcss/edit_profile.css" %}'>
+
+
+	<section style="margin-top: 120px;">
+		<div class="container">
+			<form method="POST" action="" enctype="multipart/form-data">
+				{% csrf_token %}
+
+				<div class="higher-div"></div>
+
+				<div class="middle-div row">
+					<div class="col-md-1 p-4">
+						{% if request.user.profile.image %}
+			              <img src="{{ request.user.profile.image.url }}"
+			                   class="rounded-circle"
+			                   width="45"
+			                   height="45"
+			                   alt="User">
+			            {% else %}
+			              <img src="{% static 'Photos/profile.webp' %}"
+			                   class="rounded-circle"
+			                   width="45"
+			                   height="45"
+			                   alt="Default User">
+			            {% endif %}
+					</div>
+					<div class="col-md-9 info ps-4">
+						<h5>Chahat</h5>
+						<p>chahatbawa23@gmail.com</p>
+					</div>
+					<div class="col-md-2 p-5">
+						<button type="submit" class="button form-control btn fw-bold" >Save</button>
+					</div>
+
+				</div>
+
+
+				<div class="row p-3 data">
+					<div class="col-md-6">
+						<label for="firstname" class="fw-bold mt-2">FirstName</label><br>
+						<input type="text" id="firstname" name="firstname" placeholder="Your FirstName" class="txt form-control" value="{{ user.firstname }}"><br>
+
+						<label for="email" class="fw-bold mt-2">Email</label>
+						<input type="email" id="email" name="email" placeholder="Your email" class="txt form-control" value="{{ user.email }}"><br>
+
+						<label for="contact" class="fw-bold mt-2">Contact</label>
+						<input type="tel" id="contact" name="contact" placeholder="Your Contact" class="txt form-control" pattern="[6-9]{1}[0-9]{9}"><br>
+
+						<label for="alternate_contact" class="fw-bold mt-2">Alternate Contact</label>
+	    				<input type="tel" id="alternate_contact" name="alternate_contact" placeholder="Alternate Phone Number"
+	           			class="txt form-control" pattern="[6-9]{1}[0-9]{9}"><br>
+
+						<label for="photo" class="fw-bold mt-2">Profile Photo</label><br>
+						<input type="file" id="photo" name="photo" class="txt form-control" accept="image/*"><br>
+
+						<label for="address" class="fw-bold mt-2">Address </label><br>
+						<textarea id="address" name="address" placeholder="Enter your full address" class="txt form-control" rows="4">{{ user.address }}</textarea><br>
+						
+					</div>
+					<div class="col-md-6">
+						<label for="lastname" class="fw-bold mt-2">LastName </label><br>
+						<input type="text" id="lastname" name="lastname" placeholder="Your LastName" class="txt form-control"><br>
+
+						<label for="birthday" class="fw-bold mt-2">Birthday </label><br>
+						<input type="date" id="birthday" name="birthday" placeholder="Your Birthday" class="txt form-control"><br>
+
+						<label for="age" class="fw-bold mt-2">Age </label><br>
+						<input type="number" id="age" name="age" placeholder="Your Age" class="txt form-control" min="1" max="120" ><br>
+
+						<label for="social_link" class="fw-bold mt-2">Social Media Profile</label>
+	    				<input type="url" id="social_link" name="social_link" placeholder="Enter any social media profile link (e.g., Instagram, LinkedIn, Facebook)" class="txt form-control"><br>
+
+						<label class="fw-bold mt-2">Gender</label><br>
+						<div class="mt-2 mb-2">
+							<input type="radio" id="male" name="gender" value="Male" {% if user.gender == "Male" %} checked {% endif %}>
+							<label for="male" class="fw-bold">Male</label>
+
+							<input type="radio" id="female" name="gender" value="Female">
+							<label for="female" class="fw-bold">Female</label>
+
+							<input type="radio" id="other" name="gender" value="Other">
+							<label for="other" class="fw-bold">Other</label><br>
+						</div><br>
+
+	    				<label for="bio" class="fw-bold mt-2">About You</label>
+	    				<textarea id="bio" name="bio" placeholder="Tell us about yourself" class="txt form-control" rows="4"></textarea><br>			
+					</div>
+				</div>
+
+				<div class="row mb-5">
+				  	<div class="col-md-12 bottom-div">
+					    <h5 class="fw-bold mt-2">Notifications</h5>
+
+					    <input type="checkbox" id="newsletter" name="newsletter" value="yes">
+					    <label class="ms-2" for="newsletter">Subscribe to Newsletter</label><br>
+
+				  	</div>
+				</div>	
+			</form>
+		</div>
+	</section>
+
+
+
+<label for="country" class="fw-bold mt-2">Country </label><br>
+					<input type="text" id="country" name="country" placeholder="Your Country" class="form-control"><br>
+
+					<label for="pincode" class="fw-bold mt-2">Pincode </label><br>
+					<input type="text" id="pincode" name="pincode" placeholder="Enter Pincode" class="form-control" pattern="[A-Za-z0-9\s\-]{3,10}"><br> -->
+
+
+<!-- <label for="state" class="fw-bold mt-2">State </label><br>
+					<input type="text" id="state" name="state" placeholder="Your State" class="form-control"><br> -->

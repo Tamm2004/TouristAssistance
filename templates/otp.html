@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	
+	<link rel="stylesheet" type="text/css" href='{% static "customcss/form.css" %}'>
+	<!-- <script src='{%static "js/bootstrap.bundle.min.js" %}'></script> -->
+	
+	<div class="row" style="margin-top: 66px;">
+		<div class="col-md-5 image">
+			<img src="{%static 'Photos/login.png' %}" style="padding-top: 4rem;">
+		</div>
+		<div class="col-md-7">
+			<h1 class="animated-text" style="padding-left: 7rem;"><strong>
+	        Verification!
+	        </strong></h1>
+
+	        <div class="box">
+				<h4>AmritPath</h4>
+				<h6>Hey there! Enter your OTP.</h6>
+
+				<form method="POST" action="{% url 'otp' %}">
+				{% csrf_token %}
+
+			
+				<input type="text" id="firstname" name="firstname"  value="{{firstname}}" hidden>
+				<input type="text" id="lastname" name="lastname"  value="{{lastname}}" hidden>
+				<input type="password" id="password" name="password"  value="{{password}}" hidden>
+				<input type="text" id="category" name="category"  value="{{category}}" hidden>
+
+
+				
+				<label for="email" class="fw-bold mt-2">EMAIL</label><br>
+				<input type="email" id="email" name="email" class="txt form-control" value="{{email}}"><br>
+
+
+				<label for="otp" class="fw-bold mt-2 d-flex justify-content-between">OTP * <span class="text-danger"> {% if ms == "Incorrect otp" %} OTP is incorrect {% endif %}</span></label>
+				<input type="text" placeholder="Enter OTP" class="txt form-control" name="otp" required><br>
+				<input type="text" class="txt form-control" name="o_otp" value="{{o_otp}}" hidden>
+
+							
+
+				<button type="submit" class="button search form-control btn fw-bold mt-3" >Submit</button><br><br>
+				</form>
+				
+			</div>
+		</div>
+	</div> 
+
+{% endblock %}
+

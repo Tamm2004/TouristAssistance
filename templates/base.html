@@ -1,0 +1,211 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title></title>
+	<link rel="stylesheet" type="text/css" href='{% static "css/bootstrap.min.css" %}'>
+	<link rel="stylesheet" type="text/css" href='{% static "customcss/base.css" %}'>
+  <link rel="stylesheet" type="text/css" href='{%static "icofont/icofont.min.css" %}'>
+  <link rel="stylesheet" type="text/css" href="{%static 'css\aos.css' %}">
+  	<!-- <script src='{% static "js/bootstrap.bundle.min.js" %}'></script> -->
+  	
+
+</head>
+<body>
+	{% if messages %}
+    <script>
+        {% for message in messages %}
+          alert("{{ message|escapejs }}");
+        {% endfor %}
+    </script>
+	{% endif %}
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'index' %}"><img src="{%static 'photos/logo.jpeg' %}" height="40px" width="70px;"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto  ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page" href="{% url 'index' %}"> <i class="icofont-home me-2"></i>Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.path == '/about_us/' %}active{% endif %}" href="{% url 'about_us' %}"><i class="icofont-info-circle me-2"></i>About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.path == '/review/' %}active{% endif %}" href="{% url 'review' %}"><i class="icofont-star me-2"></i>Review</a>
+        </li>
+       	<!-- <li class="nav-item">
+          <a class="nav-link" href="#"><i class="icofont-compass-alt me-2"></i>Services</a>
+        </li> -->
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle {% if 'places_to_visit' in request.path or 'food_to_eat' in request.path or 'hotels_to_stay' in request.path %}active{% endif %}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="icofont-compass-alt me-2"></i>Services
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item items" href="{% url 'places_to_visit' %}">Places</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item items" href="{% url 'food_to_eat' %}">Food</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item items" href="{% url 'hotels_to_stay' %}">Hotels</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item items" href="{% url 'products_to_buy' %}">Products</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item items" href="{% url 'restaurants_to_explore' %}">Restaurants</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item items" href="{% url 'transportation' %}">Transportation</a></li>
+          </ul>
+        </li>
+        
+      </ul>
+      <form class="d-flex" role="search" method="GET" action="{% url 'search' %}">
+	    <input 
+	        class="form-control search-input me-2" 
+	        type="search" 
+	        name="q"
+	        placeholder="Search"
+	        aria-label="Search"
+	        required
+	    />
+	    <button class="btn search me-2" type="submit">Search</button>
+	</form>
+      <!-- <form class="d-flex" role="search">
+        <input class="form-control search-input me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button class="btn search" type="submit">Search</button>&nbsp;&nbsp;
+      </form> -->
+      <!-- <a href="{% url 'register' %}" class="btn search me-2" {% if request.session.email %} hidden {% endif %}><i class="icofont-user me-2"></i>Sign Up</a> -->
+      {% if request.session.email %}
+	  <div class="dropdown">
+  	  	<button class="btn p-0 border-0 bg-transparent dropdown-toggle" data-bs-toggle="dropdown" 
+  	  	aria-expanded="false">
+    	{% if user.photo %}
+              <img src="{{ user.photo.url }}"
+                   class="rounded-circle"
+                   width="40"
+                   height="40"
+                   alt="User">
+            {% else %}
+              <img src="{% static 'Photos/profile.webp' %}"
+                   class="rounded-circle"
+                   width="40"
+                   height="40"
+                   alt="Default User">
+            {% endif %}
+  		</button>
+
+  		<ul class="dropdown-menu dropdown-menu-end" >
+    		<li class="dropdown-item text-muted small session_email">
+      		{{ request.session.email }}
+    		</li>
+    		<li><hr class="dropdown-divider"></li>
+    		{% if request.session.category == "Business Owner" %}
+			<li>
+			  <a class="dropdown-item items" href="{% url 'dashboard' %}">
+			    <i class="icofont-dashboard-web me-1"></i> Dashboard
+			  </a>
+			</li>
+			<li><hr class="dropdown-divider"></li>
+			{% endif %}
+    		<li> <a class="dropdown-item items" href="{% url 'edit_profile' %}"><i class="icofont-pencil me-1 fw-bold"></i> Edit Profile </a> </li>
+    		<li><hr class="dropdown-divider"></li>
+    		<li> <a class="dropdown-item items" href="{% url 'wishlist' %}"><i class="icofont-heart me-1"></i> Bucketlist </a> </li>
+    		<li><hr class="dropdown-divider"></li>
+    		<li> <a class="dropdown-item items" href="{% url 'logout' %}"><i class="icofont-logout me-1"></i> Logout </a> </li>
+  		</ul>
+	  </div>
+	  {% else %}
+	  <a href="{% url 'login' %}" class="btn login"><i class="icofont-user me-2"></i>Login</a>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+
+<main>
+{% block content %}
+
+
+{% endblock %}
+</main>
+
+
+
+<footer>
+	<div class="row footer">
+		<div class="col-md-4">
+			<h3>Stay in Touch!</h3>
+			<p class="footer-text">Subscribe to our newsletter and receive emails packed with exclusive news and promotions.</p>
+			<form method="POST" action="{% url 'subscribe_newsletter' %}">
+				{% csrf_token %}
+			<div class="input-group mt-4">
+			  <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+			  <button class="btn search-footer" type="submit">Subscribe</button>
+			</div>
+			</form>
+		</div>
+		<div class="col-md-2"></div>
+		<div class="col-md-2">
+			<h5><span>Quick</span> Links</h5>
+			<div class="links">
+				<a href="{% url 'index' %}" ><b>-</b>Home </a><br>
+				<a href="{% url 'about_us' %}" ><b>-</b>About Us</a><br>
+				<!-- <a href="#" ><b>-</b>Services</a><br> -->
+				<a href="{% url 'review' %}" ><b>-</b>Review</a><br>
+			</div>
+		</div>
+
+		<div class="col-md-2">
+			<h5><span>Sup</span>port</h5>
+			<div class="links">
+				<a href="{% url 'contact_us' %}" ><b>-</b>Contact Us </a><br>
+				<a href="{% url 'contact_us' %}" ><b>-</b>Help & Support</a><br>
+				<a href="{% url 'chatbot' %}" ><b>-</b>Chatbot</a><br>
+				<!-- <a href="#" ><b>-</b>Review</a><br> -->
+			</div>
+		</div>
+
+		<div class="col-md-2">
+			<h5><span>Ser</span>vices</h5>
+			<div class="links">
+				<a href="{% url 'places_to_visit' %}" ><b>-</b>Places </a><br>
+				<a href="{% url 'food_to_eat' %}" ><b>-</b>Food</a><br>
+				<a href="{% url 'products_to_buy' %}" ><b>-</b>Product</a><br>
+				<!-- <a href="#" ><b>-</b>Review</a><br> -->
+			</div>
+		</div>
+	</div>
+	<div class="row p-4 bottom">
+		<div class="col-md-6">
+			<i class="icofont-copyright"></i>2024 All Rights Reserved By AmritPath
+		</div>
+		<div class="col-md-6 right">
+			<a href="https://twitter.com" ><i class="icofont-twitter icon"></i></a>
+			<a href="https://facebook.com" ><i class="icofont-facebook icon"></i></a>
+			<a href="https://youtube.com" ><i class="icofont-youtube-play icon"></i></a>
+			<a href="https://instagram.com" ><i class="icofont-instagram  icon"></i></a>
+			<a href="https://linkedin.com" ><i class="icofont-linkedin icon"></i></a>
+		</div>
+	</div>
+
+
+</footer>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> -->
+<script src='{% static "js/bootstrap.bundle.min.js" %}'></script>
+
+{% if request.resolver_match.url_name != 'chatbot' %}
+<a href="{% url 'chatbot' %}" class="chatbot-icon">
+    <!-- <i class="icofont-brand-android-robot"></i> -->
+    <img src="{%static 'photos/chatbot1.png' %}" height="70px" width="70px" class="rounded-circle">
+</a>
+{% endif %}
+
+<script src='{%static "js\aos.js" %}'></script> 
+  <script>
+     AOS.init()
+  </script>
+
+
+</body>
+</html>

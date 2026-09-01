@@ -1,0 +1,389 @@
+
+.hero-title {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #561c24;
+}
+
+.hero-text {
+  color: #6d060e;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.button {
+  border: 1px solid #561c24 !important;
+  box-shadow: 5px 5px 2px #b0625a;
+  padding: 10px 20px;
+}
+.button:active,
+.button:focus {
+  background-color: white !important;
+  color: #561c24 !important;
+}
+.img-stack {
+  position: relative;
+}
+
+.img {
+  object-fit: cover;
+  border-radius: 80px;
+}
+
+.img-tall {
+  height: 350px;
+  width: 170px;
+  margin-top: 40px;
+  position: relative;
+  z-index: -1;
+}
+
+.img-small {
+  height: 250px;
+  width: 150px;
+  position: absolute;
+  z-index: 1;
+}
+
+.left-stack .img-small {
+  top: 290px;
+  left: 100px;
+}
+
+
+.right-stack .img-small {
+  top: 290px;
+  left: 100px;
+}
+
+.right-stack .img-small-mid {
+  height: 200px;
+  width: 130px;
+  top: 150px;
+  left: 160px;
+  z-index: -2;
+}
+
+.left-stack{
+  transform: translateX(-40px);
+}
+
+.right-stack{
+  transform: translateX(-50px);
+  margin-right: 50px;
+}
+
+.mid_section{
+  overflow-x: hidden;
+}
+
+.mid-section-heading{
+  color: #561c24;
+  font-family: 'Brush Script MT', 'Brush Script Std', cursive;
+  font-size: 4rem;
+  letter-spacing: 0.5rem;
+  word-spacing: 0.3rem;
+}
+.mid-section-text{
+  color: #6d060e;
+  padding: 0rem 15rem;
+  margin: 0;
+}
+
+.see-all{
+  color: #561c24 !important;
+  font-size: 1rem; 
+  text-align: right;
+  margin-top: -25px;
+  margin-left: -50px;
+  font-weight: bold;
+}
+.see-all:hover{
+  text-decoration: underline;
+}
+
+.card{
+  background-color: #b0625a;
+  color: white ;
+  height: 350px;
+}
+
+.card-body .card-title{
+  color: white;
+}
+
+.card-button{
+  color: white ;
+}
+.card-button:hover{
+  font-weight: bold;
+}
+.wishlist-icon {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 22px;
+    color: white;
+    padding: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.wishlist-icon:hover {
+    color: red;
+}
+
+.review-section{
+  background-image: linear-gradient(to top, white ,white 60%, #561c24 , #561c24 40%);
+  min-height: 500px;
+}
+.review-heading{
+  color: white;
+  font-family: 'Brush Script MT', 'Brush Script Std', cursive;
+  font-size: 4rem;
+  letter-spacing: 0.5rem;
+}
+.review-text{
+  color: #e8d8c4 ;
+  text-align: justify;
+}
+
+.review-card{
+  background-color: #b0625a ;
+  color: white ;
+  height: 200px;
+  border: 1px solid #561c24 ;
+  box-shadow:5px 5px 5px #b0625a ;
+  border-radius: 20px;
+}
+
+.time{
+  color: white;
+}
+
+.rating-summary {
+    background: white;
+    border-radius: 20px;
+    border: 1px solid #b0625a ;
+    box-shadow:5px 5px 5px #b0625a ;
+}
+
+.rating-summary h2 {
+    font-size: 42px;
+    font-weight: bold;
+    color: #561c24;
+}
+
+.map-section{
+  background-image:url('/static/photos/golden 2.jpg');
+  background-size:cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+}
+
+.map-search-box{
+  background-color: #e8d8c4;
+  padding: 10px 10px;
+  border-radius:10px;
+  width: 600px;
+  text-align: center;
+}
+
+.map-search-box input{
+  width:450px;
+  border: 1px solid #561c24;
+  padding:5px 35px;
+  border-radius:10px;
+}
+
+.search-wrapper{
+  position: relative;
+  display: inline-block;
+}
+
+.search-icon{
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #561c24;
+  font-size: 18px;
+}
+
+.map-search-box input::placeholder{
+  color:#561c24;
+  font-weight: bold;
+}
+
+.map-search-box input:focus{
+  outline:none;                 
+  border:1px solid #561c24;  
+  color: #561c24;     
+}
+.map-search-box button{
+  color: white;
+  background-color: #561c24;
+  padding: 5px 10px;
+  border-radius: 10px;
+  width: 100px;
+  border: 1px solid #561c24;
+}
+
+.map-search-box button:hover{
+  background:#b0625a;
+}
+
+.map{
+  margin: 50px 30px;
+  background-color: #e8d8c4;
+  border-radius: 20px;
+}
+
+.map-frame{
+  padding: 20px;
+  border-radius: 20px;
+}
+
+
+.carousel-item {
+  position: relative;
+  height: 650px;
+  overflow: hidden;
+}
+
+.bg-blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+ /* background-size: cover;
+  background-position: center;
+  filter: blur(2px);
+  transform: scale(1.1);*/
+  z-index: 1;
+  /*pointer-events: none; 
+  opacity: 0.8;*/
+
+  background: linear-gradient(to right, #f8f8f8, #561c24);
+  color:white;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content a{
+  height: 450px;
+  width: 100%;
+  text-align: center;
+
+}
+.slider-img {
+  height: 450px;
+  width: 90%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 30px;
+  
+}
+
+.center-text {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.bottom-title {
+  position: absolute;
+  bottom: 5px;
+  left: 40px;
+  
+}
+.bottom-title h3{
+  font-size: 4rem;
+  color: white;
+  /*font-weight: bold;*/
+  color:#561c24;
+  font-family: 'Brush Script MT', 'Brush Script Std', cursive;
+
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  z-index: 3;
+  opacity: 1;
+}
+
+.accordion-item {
+    border: none;
+    margin-bottom: 15px;
+    border-radius: 15px !important;
+    overflow: hidden;
+    box-shadow: 5px 5px 5px #b0625a;
+}
+
+.accordion-button {
+    background-color: #561c24;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: none;
+}
+
+.accordion-button::after {
+    filter: invert(1); 
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #b0625a;
+    color: white;
+    box-shadow: none;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border: none;
+}
+
+.accordion-body {
+    background-color: #f8f4f3;
+    color: #561c24;
+    border-top: 1px solid rgba(86, 28, 36, 0.3);
+    line-height: 1.6;
+}
+
+.accordion-button:hover {
+    background-color: #b0625a;
+    transition: 0.3s;
+}
+
+
+
+.weather-section {
+    min-height: 450px; 
+    position: relative;
+}
+
+.loader {
+    margin: 150px auto;
+    width: 60px;
+    height: 60px;
+    border: 6px solid #ddd;
+    border-top: 6px solid #561c24;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}

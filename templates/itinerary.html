@@ -1,0 +1,645 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+	<link rel="stylesheet" type="text/css" href='{% static "customcss/itinerary.css" %}'>
+
+	<div class="container mb-5" style="padding-top: 69px;">
+		<h1 class="hero-title text-center mb-5 mt-3">The Itineraries</h1>
+		<div class="row mb-5">
+		  	<div class="col-sm-4 mb-3 mb-sm-0">
+		    	<div class="card text-center">
+		      		<div class="card-body">
+		        		<h5 class="card-title">2 Days</h5>
+		        		<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+		        		<a href="#" class="btn button" onclick="showItinerary('day-2')">View</a>
+		      		</div>
+		    	</div>
+		  	</div>
+			<div class="col-sm-4">
+			    <div class="card text-center">
+			      	<div class="card-body">
+			        	<h5 class="card-title">4 Days</h5>
+			        	<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+			        	<a href="#" class="btn button" onclick="showItinerary('day-4')">View</a>
+			      	</div>
+			    </div>
+			</div>
+		    <div class="col-sm-4">
+		    	<div class="card text-center">
+		      		<div class="card-body">
+		        		<h5 class="card-title">6 Days</h5>
+		        		<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+		        		<a href="#" class="btn button" onclick="showItinerary('day-6')">View</a>
+		      		</div>
+		    	</div>
+		  	</div>
+		</div>
+
+
+	
+
+		<div class="day-2 itinerary-section">
+		    <div class="day-card">
+		        <div class="day-label">DAY 1</div>
+
+		        <div class="content">
+		            <div class="header">
+		                <div class="time-title">Time</div>
+		                <div class="activity-title">Core Amritsar + Wagah</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">9:00 AM- 9:15 AM</div>
+		                <div class="activity">Arrive in the city, check into your accommodation. Prefer hotel near Golden Temple or Railway Station.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">9:15 AM-10:00 AM</div>
+		                <div class="activity">Have breakfast at nearby option Bharawan Da Dhaba or somewhere else. Eat famous Chole Puri and Lassi.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">10:00 AM to 12:00 PM</div>
+		                <div class="activity">Visit the most famous Golden Temple. Take a dip in Amrit Sarovar and experience Langar (free community meal).</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">12:00 PM to 1:00 PM</div>
+		                <div class="activity">Visit nearby Jallianwala Bagh which is at the walking distance from golden temple. It is the historical site of the tragic massacre.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">1:15 PM to 2:30 PM</div>
+		                <div class="activity">Visit Gobindgarh Fort which is good for Cultural shows, Punjabi vibes and light snacks after jallianwala bagh.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">3:00 PM to 7:00 PM</div>
+		                <div class="activity">Visit the Wagah Border after taking rest and try to leave early then only you get best seats and get to experience the high energy.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">7:30 PM to 8:30 PM</div>
+		                <div class="activity">Visit the famous Durgiana Temple after coming back from wagah border and get to experience the warmth of sprituality.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">9:00 PM to 10:00 PM</div>
+		                <div class="activity">Eat dinner nearby and must try the famous Dal Makhani and Paneer Dishes.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">10:00 PM to 11:30 PM</div>
+		                <div class="activity">Go for a walk at Heritage street and get to experience the night golden view of amritsar. Visit Partition Museum there and view Maharaja Ranjit Singh Statue in the middle of the road. Try Amritsar famous Jalebi and Faluda Ice Cream. </div>
+		            </div>
+
+		        </div>
+		    </div>
+
+		    
+		    <div class="day-card">
+		        <div class="day-label">DAY 2</div>
+
+		        <div class="content">
+		            <div class="header">
+		                <div class="time-title">Time</div>
+		                <div class="activity-title">Spiritual + Cultural + Food + Local Exploration</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">6:00 AM to 8:30 AM</div>
+		                <div class="activity">Revisit Golden Temple if you can early morning is one of the best experience and then visit Mata Kaulan Sahib and Baba Atal Sahib gurudwara nearby. Have your morning tea at Giani Tea Stall in between.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">9:00 AM to 11:00 AM</div>
+		                <div class="activity">Must try famous Amritsari Kulcha nearby somewhere for breakfast. After breakfast come back to hotel and checkout.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">11:00 AM to 12:30 PM</div>
+		                <div class="activity">Visit Mata Lal Devi Temple where you get to see various symbolic structures representing different spiritual experiences.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">12:30 PM to 2:30 PM</div>
+		                <div class="activity">Visit Sadda Pind where you get to experience traditional punjabi culture. Visit Chheharta Sahib Gurudwara which will be on your way.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">3:00 PM to 5:00 PM</div>
+		                <div class="activity">Visit Ram Tirath which is one of the important religious and cultural site. You can also visit Pipli Sahib Gurudwara on route.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">5:30 PM to 7:30 PM</div>
+		                <div class="activity">Visit the famous and historic Kesar Da Dhaba then visit the hidden places nearby Guru Ka Mahal and Bhai Shalo Da Tobha which is at the walking distance from there.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">7:30 PM to 10:00 PM</div>
+		                <div class="activity">Visit local markets like Hall Bazar, Guru Bazar, Katra Jaimal Singh Market for souveniers and must buy Punjabi Jutti, Phulkari Suit and Papad Wadiyan.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">10:00 PM to 11:00 PM</div>
+		                <div class="activity">Have your dinner at famous restaurant in the middle of the bazar RK Food Plaza and can leave on time back to your original location.</div>
+		            </div>
+
+		        </div>
+		    </div>
+
+		 
+	    </div>	
+
+	    <div class="day-4 itinerary-section">
+		    <div class="day-card">
+		        <div class="day-label">DAY 1</div>
+
+		        <div class="content">
+		            <div class="header">
+		                <div class="time-title">Time</div>
+		                <div class="activity-title">Core Amritsar + Wagah</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">9:00 AM- 9:30 AM</div>
+		                <div class="activity">Arrive in the city, check into your accommodation. Prefer hotel near Golden Temple or Railway Station.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">10:00 AM-11:00 AM</div>
+		                <div class="activity">Have breakfast at nearby option Bharawan Da Dhaba or somewhere else. Eat famous Chole Puri and Lassi.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">11:00 AM to 1:00 PM</div>
+		                <div class="activity">Visit the most famous Golden Temple. Take a dip in Amrit Sarovar and experience Langar (free community meal).</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">1:00 PM to 2:00 PM</div>
+		                <div class="activity">Visit nearby Jallianwala Bagh which is at the walking distance from golden temple. It is the historical site of the tragic massacre.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">2:00 PM to 3:00 PM</div>
+		                <div class="activity">Visit Mata Kaulan and Baba Atal Gurudwaras nearby. Both are also at the walking distance from Golden Temple.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">3:00 PM to 7:00 PM</div>
+		                <div class="activity">Visit the Wagah Border after taking rest and try to leave early then only you get best seats and get to experience the high energy.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">7:30 PM to 8:30 PM</div>
+		                <div class="activity">Visit the famous Durgiana Temple after coming back from wagah border and get to experience the warmth of sprituality.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">9:00 PM to 10:00 PM</div>
+		                <div class="activity">Eat dinner nearby and must try the famous Dal Makhani and Paneer Dishes.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">10:00 PM to 11:30 PM</div>
+		                <div class="activity">Go for a walk at Heritage street and get to experience the night golden view of amritsar and view Maharaja Ranjit Singh Statue in the middle of the road. Try Amritsar famous Jalebi and Faluda Ice Cream. </div>
+		            </div>
+
+		        </div>
+
+		    </div>
+
+		    
+		    <div class="day-card">
+		        <div class="day-label">DAY 2</div>
+
+		        <div class="content">
+		            <div class="header">
+		                <div class="time-title">Time</div>
+		                <div class="activity-title">Spiritual + Food + Local Exploration</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">6:00 AM to 9:00 AM</div>
+		                <div class="activity">Revisit Golden Temple if you can early morning is one of the best experience and then visit Mata Kaulan Sahib and Baba Atal Sahib gurudwara nearby which is totally optional. Have your morning tea at Giani Tea Stall in between.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">9:00 AM to 10:00 AM</div>
+		                <div class="activity">Must try famous Amritsari Kulcha nearby somewhere for breakfast.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">10:00 AM to 11:00 PM</div>
+		                <div class="activity">Come back to your hotel and take some rest.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">11:30 PM to 1:30 PM</div>
+		                <div class="activity">Visit Mata Lal Devi Temple where you get to see various symbolic structures representing different spiritual experiences.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">2:00 PM to 5:00 PM</div>
+		                <div class="activity">Visit Ram Tirath which is one of the important religious and cultural site. You can also visit Pipli Sahib Gurudwara on route.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">6:00 PM to 8:00 PM</div>
+		                <div class="activity">Visit local market Guru Bazar for souveniers, Phulkari Suit and Papad Wadiyan.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">8:00 PM to 10:30 PM</div>
+		                <div class="activity">Visit the famous and historic Kesar Da Dhaba then visit the hidden places nearby Guru Ka Mahal and Bhai Shalo Da Tobha which is at the walking distance from there.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">10:30 PM to 11:30 PM</div>
+		                <div class="activity">Visit Shaheed Ganj Sahib Gurudwara which is one of the most revered sikh shrines in Amritsar.</div>
+		            </div>
+
+		        </div>
+		    </div>
+
+		    <div class="day-card">
+		        <div class="day-label">DAY 3</div>
+
+		        <div class="content">
+		            <div class="header">
+		                <div class="time-title">Time</div>
+		                <div class="activity-title">Culture + Fort + Gurudwaras</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">8:00 AM to 9:30 AM</div>
+		                <div class="activity">Breakfast at the hotel or nearby café</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">10:00 AM to 11:30 AM</div>
+		                <div class="activity">Visit Gobindgarh Fort which is good for Cultural shows, Punjabi vibes and light snacks.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">12:00 PM to 3:30 PM</div>
+		                <div class="activity">Visit the most famous Baba Budha Sahib Gurudwara that is surrounded by a peaceful environment and serene atmosphere.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">4:00 PM to 6:30 PM</div>
+		                <div class="activity">Visit the hidden gems of amritsar, Pul Kanjari, Sword Obelisk and Partition Museum.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">7:00 PM to 10:00 PM</div>
+		                <div class="activity">Visit the famous Khairuddin Mosque and the Hall Bazar where it is situated and then Katra Jaimal Singh Market for shopping and street food.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">10:00 PM to 12:00 PM</div>
+		                <div class="activity">Visit Ranjit Avenue, Lawrence Road area of the Amritsar where you get to see the night life.</div>
+		            </div>
+		        </div>
+		    </div>
+
+		    <div class="day-card">
+		        <div class="day-label">DAY 4</div>
+
+		        <div class="content">
+		            <div class="header">
+		                <div class="time-title">Time</div>
+		                <div class="activity-title">Hidden Gems + Experience</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">8:00 AM to 11:00 AM</div>
+		                <div class="activity">Breakfast at the hotel or nearby café. Try Chole Bhature, the famous food of amritsar if have not tried yet.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">11:00 AM to 12:00 PM</div>
+		                <div class="activity">Come back to hotel. Pack your bags and checkout.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">12:00 AM to 1:30 PM</div>
+		                <div class="activity">Explore the rest of the city markets if some missed and famous shops for shopping and must try famous foods within the city before leaving then we will head to outskirts.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">1:30 PM to 2:30 PM </div>
+		                <div class="activity">Visit the hidden gems of amritsar, Sarai Amanat Khan which was was built during the Mughal period.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">3:00 PM to 6:00 PM </div>
+		                <div class="activity">Visit one more hidden gem of amritsar which is situated at the outskirts, Sadda Pind where you get to experience traditional punjabi culture. Also visit Chheharta Sahib Gurudwara which will be on your way.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">6:00 PM to 10:00 PM </div>
+		                <div class="activity">Visit the next hidden gem called Harike Wetland which is considered as the largest wetland in northern india. After that head back to your city.</div>
+		            </div>
+		        </div>
+		    </div>
+		
+	    </div>
+
+
+	    <div class="day-6 itinerary-section">
+		    <div class="day-card">
+		        <div class="day-label">DAY 1</div>
+
+		        <div class="content">
+		            <div class="header">
+		                <div class="time-title">Time</div>
+		                <div class="activity-title">Core Amritsar + Wagah</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">9:00 AM- 9:30 AM</div>
+		                <div class="activity">Arrive in the city, check into your accommodation. Prefer hotel near Golden Temple or Railway Station.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">10:00 AM-11:00 AM</div>
+		                <div class="activity">Have breakfast at nearby option Bharawan Da Dhaba or somewhere else. Eat famous Chole Puri and Lassi.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">11:00 AM to 1:00 PM</div>
+		                <div class="activity">Visit the most famous Golden Temple. Take a dip in Amrit Sarovar and experience Langar (free community meal).</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">1:00 PM to 2:00 PM</div>
+		                <div class="activity">Visit nearby Jallianwala Bagh which is at the walking distance from golden temple. It is the historical site of the tragic massacre.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">2:00 PM to 3:00 PM</div>
+		                <div class="activity">Go back to hotel and take rest. Get freshen up before Wagah Border.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">3:00 PM to 7:00 PM</div>
+		                <div class="activity">Visit the Wagah Border after taking rest and try to leave early then only you get best seats and get to experience the high energy.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">7:30 PM to 8:30 PM</div>
+		                <div class="activity">Visit the famous Durgiana Temple after coming back from wagah border and get to experience the warmth of sprituality.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">8:30 PM to 10:00 PM</div>
+		                <div class="activity">Eat dinner nearby and must try the famous Dal Makhani and Paneer Dishes.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">10:00 PM to 11:30 PM</div>
+		                <div class="activity">Go for a walk at Heritage street and get to experience the night golden view of amritsar and view Maharaja Ranjit Singh Statue in the middle of the road. Try Amritsar famous Jalebi and Faluda Ice Cream. </div>
+		            </div>
+
+		        </div>
+		    </div>
+
+		    
+		    <div class="day-card">
+		        <div class="day-label">DAY 2</div>
+
+		        <div class="content">
+		            <div class="header">
+		                <div class="time-title">Time</div>
+		                <div class="activity-title">Spiritual + Food + Local Exploration</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">6:00 AM to 9:00 AM</div>
+		                <div class="activity">Revisit Golden Temple if you can early morning is one of the best experience and then visit Mata Kaulan Sahib and Baba Atal Sahib gurudwara nearby. Have your morning tea at Giani Tea Stall in between.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">9:30 AM to 11:00 AM</div>
+		                <div class="activity">Must try famous Amritsari Kulcha nearby somewhere for breakfast.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">11:00 AM to 1:00 PM</div>
+		                <div class="activity">Visit Mata Lal Devi Temple where you get to see various symbolic structures representing different spiritual experiences.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">1:30 PM to 4:00 PM</div>
+		                <div class="activity">Visit Sadda Pind where you get to experience traditional punjabi culture. Visit Chheharta Sahib Gurudwara which will be on your way.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">4:30 PM to 6:00 PM</div>
+		                <div class="activity">Visit Shaheed Ganj Sahib Gurudwara which is one of the most revered sikh shrines in Amritsar.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">6:30 PM to 10:00 PM</div>
+		                <div class="activity">Visit local markets like Hall Bazar, Guru Bazar, Katra Jaimal Singh Market for souveniers and must buy Punjabi Jutti, Phulkari Suit and Papad Wadiyan.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">10:00 PM to 11:00 PM</div>
+		                <div class="activity">Have your dinner at famous restaurant in the middle of the markets RK Food Plaza.</div>
+		            </div>
+
+		        </div>
+		    </div>
+
+
+
+		    <div class="day-card">
+		        <div class="day-label">DAY 3</div>
+
+		        <div class="content">
+		            <div class="header">
+		                <div class="time-title">Time</div>
+		                <div class="activity-title">Culture + Fort + Tradition</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">9:00 AM to 10:00 AM</div>
+		                <div class="activity">Breakfast at the hotel or nearby café.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">11:00 AM to 12:30 AM</div>
+		                <div class="activity">Visit Gobindgarh Fort which is good for Cultural shows, Punjabi vibes and light snacks.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">1:00 PM to 3:30 PM</div>
+		                <div class="activity">Visit the most famous Baba Budha Sahib Gurudwara that is surrounded by a peaceful environment and serene atmosphere.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">4:00 PM to 6:30 PM</div>
+		                <div class="activity">Visit Ram Tirath which is one of the important religious and cultural site. You can also visit Pipli Sahib Gurudwara on route.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">7:00 PM to 10:30 PM</div>
+		                <div class="activity">Visit the famous and historic Kesar Da Dhaba then visit the hidden places nearby Guru Ka Mahal and Bhai Shalo Da Tobha which is at the walking distance from there.</div>
+		            </div>
+		           
+		        </div>
+		    </div>
+
+		    <div class="day-card">
+		        <div class="day-label">DAY 4</div>
+
+		        <div class="content">
+		            <div class="header">
+		                <div class="time-title">Time</div>
+		                <div class="activity-title">Hidden Gems + Experience</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">9:00 AM to 10:00 AM</div>
+		                <div class="activity">Breakfast at the hotel or nearby café. Try Chole Bhature, the famous food of amritsar if have not tried yet.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">10:30 PM to 1:00 PM</div>
+		                <div class="activity">Visit the hidden gems of amritsar, Pul Kanjari, Sword Obelisk and Partition Museum.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">1:30 PM to 4:00 PM</div>
+		                <div class="activity">Visit the famous Khairuddin Mosque and the Hall Bazar where it is situated and then Katra Jaimal Singh Market for shopping and street food.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">4:30 PM to 6:00 PM </div>
+		                <div class="activity">Visit the hidden gems of amritsar, Sarai Amanat Khan which was was built during the Mughal period.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">6:00 PM to 7:00 PM </div>
+		                <div class="activity">Go back to hotel and take some rest.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">7:30 PM to 11:00 PM</div>
+		                <div class="activity">Visit Ranjit Avenue, Lawrence Road area of the Amritsar where you get to see the night life. You can also visit the company garden of Amritsar.
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+
+		    <div class="day-card">
+		        <div class="day-label">DAY 5</div>
+
+		        <div class="content">
+		            <div class="header">
+		                <div class="time-title">Time</div>
+		                <div class="activity-title">Outskirts</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">10:00 AM to 11:00 AM</div>
+		                <div class="activity">Breakfast at the hotel or nearby restaurant.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">11:00 PM to 12:30 PM</div>
+		                <div class="activity"> Visit Gurdwara Chhevin Patshahi that represents the spiritual teachings and leadership of Guru Hargobind Singh Ji.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">1:00 PM to 2:30 PM</div>
+		                <div class="activity"> Visit the Saragarhi Memorial Gurdwara that was built to commemorate the extraordinary bravery and sacrifice of the Sikh soldiers who fought in the historic Battle of Saragarhi.</div>
+		            </div>
+		            
+
+		            <div class="itinerary-row">
+		                <div class="time">2:30 PM to 10:00 PM </div>
+		                <div class="activity">Visit the next hidden gem called Harike Wetland which is considered as the largest wetland in northern india.</div>
+		            </div>
+		        </div>
+		    </div>
+
+		    <div class="day-card">
+		        <div class="day-label">DAY 6</div>
+		        
+		        <div class="content">
+		            <div class="header">
+		                <div class="time-title">Time</div>
+		                <div class="activity-title">Gurudwaras + Departure</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">10:00 AM to 11:00 AM</div>
+		                <div class="activity">Breakfast at the famous nearby restaurant.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">11:00 AM to 12:00 AM</div>
+		                <div class="activity">Come back to your hotel. Pack your bags and then checkout.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">12:00 PM to 1:30 PM</div>
+		                <div class="activity"> Visit Gurdwara Ramsar sahib which is peaceful place because it is slightly away from the busy center of Amritsar.</div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">2:00 PM to 3:30 PM</div>
+		                <div class="activity"> Visit the Santokhsar Sahib Gurdwara that was also one of the famous gurudwara in amritsar.</div>
+		            </div>
+		            
+
+		            <div class="itinerary-row">
+		                <div class="time">4:00 PM to 6:00 PM </div>
+		                <div class="activity">Explore the rest of the city famous markets and anything that left within the city.
+		                </div>
+		            </div>
+
+		            <div class="itinerary-row">
+		                <div class="time">6:00 PM to 9:00 PM</div>
+		                <div class="activity">On the way back to your original location visit Haveli near Amritsar where you get to experience the traditional punjabi culture.</div>
+		            </div>
+		        </div>		         
+		    </div>
+
+	    </div>
+
+	    <div class="points-to-remember" id="pointsSection" style="display: none;">
+		   	<div class="note-title">* Points to Remember</div>
+		    <ul>		    		
+		    	<li>Don’t miss Amritsar’s street food — especially near Golden Temple and Hall Bazaar.</li>
+		    	<li>Must-try: Amritsari Kulcha, Chole Puri, Pede wali Lassi, Jalebi, Faluda, Aam Papad.</li>
+		   		<li>Visit Golden Temple early morning (5–7 AM) or late night for best experience. </li>
+		   		<li>Reach Wagah Border at least 1–1.5 hours early.</li>
+		   		<li>Most attractions near Golden Temple are walking distance.</li>
+		   		<li>Bargaining is common in local markets.</li>
+	    		<li>Must Buy: Phulkari, Punjabi Jutti, Papad Wadiyan, Spritual Items.</li>
+	    		<li>Respect religious places & maintain decorum.</li>
+		    </ul>
+		</div>
+
+	</div>
+
+	<script>
+		function showItinerary(sectionClass) {
+		    // Hide all sections
+		    let sections = document.querySelectorAll('.itinerary-section');
+		    sections.forEach(sec => sec.style.display = 'none');
+
+		    // Show selected section
+		    document.querySelector('.' + sectionClass).style.display = 'block';
+
+		    document.getElementById('pointsSection').style.display = 'block';
+		}
+	</script>
+{% endblock %}

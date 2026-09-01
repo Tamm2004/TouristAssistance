@@ -1,0 +1,318 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	
+	<link rel="stylesheet" type="text/css" href='{% static "customcss/wishlist.css" %}'>
+	
+	<div class="container" style="margin-top: 75px;">
+    	<h1 class="hero-text text-center mt-5 mb-4">My Bucketlist</h1>
+    	{% if place_items %}
+    	<h3 class="sub-text">Places you wanna visit!</h3>
+    	
+		<div id="placeCarousel" class="carousel slide" data-bs-ride="carousel">
+		        
+		    <div class="carousel-inner">
+
+		        {% for item in place_items %}
+		            {% if forloop.counter0|divisibleby:3 %}
+		               	<div class="carousel-item {% if forloop.first %}active{% endif %}">
+		                    <div class="row justify-content-center">
+		            {% endif %}
+
+		                        <div class="col-md-4">
+		                            <a href="{% url 'place' id=item.place.id %}">
+		                            	<div class="wishlist-card">
+		                                <img src="{{item.place.image.url}}" class="card-img">
+
+		                                <div class="card-body">
+			                                <h5 class="title">{{item.place.title}}</h5>
+
+			                                <a href="{% url 'remove_wishlist' item.id %}" class="remove-btn">
+			                                    Remove
+			                                </a>
+		                                </div>
+		                            	</div>
+		                        	</a>
+		                        </div>
+
+		            {% if forloop.counter|divisibleby:3 or forloop.last %}
+		                    </div>
+		                </div>
+		            {% endif %}
+		        {% endfor %}
+
+		    </div>
+
+		        <!-- Controls -->
+		    <button class="carousel-control-prev" type="button" data-bs-target="#placeCarousel" data-bs-slide="prev">
+		        <span class="carousel-control-prev-icon"></span>
+		    </button>
+
+		    <button class="carousel-control-next" type="button" data-bs-target="#placeCarousel" data-bs-slide="next">
+		        <span class="carousel-control-next-icon"></span>
+		    </button>
+
+		</div>
+		{% endif %}
+
+
+
+		{% if food_items %}
+		<h3 class="sub-text">Food you want to try!</h3>
+		
+		<div id="foodCarousel" class="carousel slide" data-bs-ride="carousel">
+		        
+		    <div class="carousel-inner">
+
+		        {% for item in food_items %}
+		            {% if forloop.counter0|divisibleby:3 %}
+		               	<div class="carousel-item {% if forloop.first %}active{% endif %}">
+		                    <div class="row justify-content-center">
+		            {% endif %}
+
+		                        <div class="col-md-4">
+		                        	<a href="{% url 'food' id=item.food.id %}">
+			                            <div class="wishlist-card">
+			                                <img src="{{item.food.image.url}}" class="card-img">
+
+			                                <div class="card-body">
+				                                <h5 class="title">{{item.food.title}}</h5>
+
+				                                <a href="{% url 'remove_wishlist' item.id %}" class="remove-btn">
+				                                    Remove
+				                                </a>
+			                                </div>
+			                            </div>
+		                        	</a>
+		                        </div>
+
+		            {% if forloop.counter|divisibleby:3 or forloop.last %}
+		                    </div>
+		                </div>
+		            {% endif %}
+		        {% endfor %}
+
+		    </div>
+
+		        <!-- Controls -->
+		    <button class="carousel-control-prev" type="button" data-bs-target="#foodCarousel" data-bs-slide="prev">
+		        <span class="carousel-control-prev-icon"></span>
+		    </button>
+
+		    <button class="carousel-control-next" type="button" data-bs-target="#foodCarousel" data-bs-slide="next">
+		        <span class="carousel-control-next-icon"></span>
+		    </button>
+
+		</div>
+		{% endif %}
+
+
+		{% if product_items %}
+		<h3 class="sub-text">Product you want to buy!</h3>
+		
+		<div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+		        
+		    <div class="carousel-inner">
+
+		        {% for item in product_items %}
+		            {% if forloop.counter0|divisibleby:3 %}
+		               	<div class="carousel-item {% if forloop.first %}active{% endif %}">
+		                    <div class="row justify-content-center">
+		            {% endif %}
+
+		                        <div class="col-md-4">
+		                        	<a href="{% url 'product' id=item.product.id %}">
+			                            <div class="wishlist-card">
+			                                <img src="{{item.product.image.url}}" class="card-img">
+
+			                                <div class="card-body">
+				                                <h5 class="title">{{item.product.title}}</h5>
+
+				                                <a href="{% url 'remove_wishlist' item.id %}" class="remove-btn">
+				                                    Remove
+				                                </a>
+			                                </div>
+			                            </div>
+		                        	</a>
+		                        </div>
+
+		            {% if forloop.counter|divisibleby:3 or forloop.last %}
+		                    </div>
+		                </div>
+		            {% endif %}
+		        {% endfor %}
+
+		    </div>
+
+		        <!-- Controls -->
+		    <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+		        <span class="carousel-control-prev-icon"></span>
+		    </button>
+
+		    <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+		        <span class="carousel-control-next-icon"></span>
+		    </button>
+
+		</div>
+		{% endif %}
+
+
+		{% if hotel_items %}
+		<h3 class="sub-text">Hotels you want to stay!</h3>
+		
+		<div id="hotelCarousel" class="carousel slide" data-bs-ride="carousel">
+		        
+		    <div class="carousel-inner">
+
+		        {% for item in hotel_items  %}
+		            {% if forloop.counter0|divisibleby:3 %}
+		               	<div class="carousel-item {% if forloop.first %}active{% endif %}">
+		                    <div class="row justify-content-center">
+		            {% endif %}
+
+		                        <div class="col-md-4">
+		                        	<a href="{% url 'hotel' id=item.hotel.id %}">
+			                            <div class="wishlist-card">
+			                                <img src="{{item.hotel.image.url}}" class="card-img">
+
+			                                <div class="card-body">
+				                                <h5 class="title">{{item.hotel.title}}</h5>
+
+				                                <a href="{% url 'remove_wishlist' item.id %}" class="remove-btn">
+				                                    Remove
+				                                </a>
+			                                </div>
+			                            </div>
+			                        </a>
+		                        </div>
+
+		            {% if forloop.counter|divisibleby:3 or forloop.last %}
+		                    </div>
+		                </div>
+		            {% endif %}
+		        {% endfor %}
+
+		    </div>
+
+		   
+		    <button class="carousel-control-prev" type="button" data-bs-target="#hotelCarousel" data-bs-slide="prev">
+		        <span class="carousel-control-prev-icon"></span>
+		    </button>
+
+		    <button class="carousel-control-next" type="button" data-bs-target="#hotelCarousel" data-bs-slide="next">
+		        <span class="carousel-control-next-icon"></span>
+		    </button>
+
+		</div>
+		{% endif %}
+
+
+
+		{% if restaurant_items %}
+		<h3 class="sub-text">Restaurants you want to explore!</h3>
+		
+		<div id="restaurantCarousel" class="carousel slide" data-bs-ride="carousel">
+		        
+		    <div class="carousel-inner">
+
+		        {% for item in restaurant_items  %}
+		            {% if forloop.counter0|divisibleby:3 %}
+		               	<div class="carousel-item {% if forloop.first %}active{% endif %}">
+		                    <div class="row justify-content-center">
+		            {% endif %}
+
+		                        <div class="col-md-4">
+		                        	<a href="{% url 'restaurant' id=item.restaurant.id %}">
+			                            <div class="wishlist-card">
+			                                <img src="{{item.restaurant.image.url}}" class="card-img">
+
+			                                <div class="card-body">
+				                                <h5 class="title">{{item.restaurant.title}}</h5>
+
+				                                <a href="{% url 'remove_wishlist' item.id %}" class="remove-btn">
+				                                    Remove
+				                                </a>
+			                                </div>
+			                            </div>
+			                        </a>
+		                        </div>
+
+		            {% if forloop.counter|divisibleby:3 or forloop.last %}
+		                    </div>
+		                </div>
+		            {% endif %}
+		        {% endfor %}
+
+		    </div>
+
+		   
+		    <button class="carousel-control-prev" type="button" data-bs-target="#restaurantCarousel" data-bs-slide="prev">
+		        <span class="carousel-control-prev-icon"></span>
+		    </button>
+
+		    <button class="carousel-control-next" type="button" data-bs-target="#restaurantCarousel" data-bs-slide="next">
+		        <span class="carousel-control-next-icon"></span>
+		    </button>
+
+		</div>
+		{% endif %}
+
+
+		
+
+
+		{% if shop_items %}
+			<h3 class="sub-text">Shops you want to visist!</h3>
+			
+			<div id="shopCarousel" class="carousel slide" data-bs-ride="carousel">
+			        
+			    <div class="carousel-inner">
+
+			        {% for item in shop_items  %}
+			            {% if forloop.counter0|divisibleby:3 %}
+			               	<div class="carousel-item {% if forloop.first %}active{% endif %}">
+			                    <div class="row justify-content-center">
+			            {% endif %}
+
+			                        <div class="col-md-4">
+			                        	<a href="{% url 'shop' id=item.shop.id %}">
+				                            <div class="wishlist-card">
+				                                <img src="{{item.shop.image.url}}" class="card-img">
+
+				                                <div class="card-body">
+					                                <h5 class="title">{{item.shop.title}}</h5>
+
+					                                <a href="{% url 'remove_wishlist' item.id %}" class="remove-btn">
+					                                    Remove
+					                                </a>
+				                                </div>
+				                            </div>
+				                        </a>
+			                        </div>
+
+			            {% if forloop.counter|divisibleby:3 or forloop.last %}
+			                    </div>
+			                </div>
+			            {% endif %}
+			        {% endfor %}
+
+			    </div>
+
+			   
+			<button class="carousel-control-prev" type="button" data-bs-target="#shopCarousel" data-bs-slide="prev">
+		        <span class="carousel-control-prev-icon"></span>
+		    </button>
+
+			<button class="carousel-control-next" type="button" data-bs-target="#shopCarousel" data-bs-slide="next">
+		        <span class="carousel-control-next-icon"></span>
+		    </button>
+
+		</div>
+		{% endif %}
+
+	</div>
+{% endblock %}
+
+
+		
+

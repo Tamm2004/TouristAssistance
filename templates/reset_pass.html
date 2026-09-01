@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	<link rel="stylesheet" type="text/css" href='{% static "customcss/form.css" %}'>
+	<!-- <script src='{%static "js/bootstrap.bundle.min.js" %}'></script> -->
+	
+	<div class="row" style="margin-top: 66px;">
+		<div class="col-md-5 image">
+			<img src="{%static 'Photos/login.png' %}" style="padding-top: 7rem;">
+		</div>
+		<div class="col-md-7">
+			<h1 class="animated-text" style="padding-left: 7rem;"><strong>
+	        Reset Password!
+	        </strong></h1>
+
+	        <div class="box">
+				<h4>AmritPath</h4>
+				<h6>Hey there! Create New Password</h6>
+
+				<form method="POST" action="{% url 'reset_pass' %}">
+				{% csrf_token %}
+
+				<label for="email" class="fw-bold mt-2">EMAIL * </label>
+				<input type="email" id="email" name="email" placeholder="Enter your email" class="txt form-control" value="{{email}}"><br>
+
+				<label for="password" class="fw-bold mt-2">PASSWORD *</label><br>
+				<input type="password" id="password" name="password" placeholder="Enter your password" class="txt form-control" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Must contain at least one number and one special character and one uppercase and lowercase letter, and at least 8 or more characters" required><br>
+
+				<label for="confirmpassword" class="fw-bold mt-2">CONFIRM PASSWORD *</label><br>
+				<input type="password" id="confirmpassword" name="confirmpassword" placeholder="Confirm your password" class="txt form-control" required>
+				{% if ms == "Incorrect pass" %} 
+				<span class="text-danger"> Confirm Password does not match with your Password.</span>
+				{% endif %}<br>
+				
+
+				<button type="submit" class="button search form-control btn fw-bold mt-3" >Submit</button><br><br>
+				</form>
+				
+			</div>
+		</div>
+	</div> 
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'sidebar.html' %}
+{% load static %}
+{% block content %}
+	<link rel="stylesheet" type="text/css" href='{% static "customcss/dashboard.css" %}'>
+
+	<div class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 90vh; ">
+		<h1 class="text-center" style="color: #561c24;font-family: 'Brush Script MT', 'Brush Script Std', cursive;
+  		font-size: 5rem; letter-spacing: 0.5rem; word-spacing: 0.3rem;">Welcome to your<br> Dashboard</h1>
+
+  		<div class="row mb-2">
+  			<div class="col-md-4">
+  				<div class="card" style="width: 22rem; height: 11rem;">
+				  	<div class="card-body">
+					    <h5 class="card-title">Smart Destination Search</h5>
+					    <p class="card-text">Users can search attractions, hotels, restaurants, and shops using filters like category, rating, and location. This helps them quickly find relevant places in Amritsar.</p>
+				  	</div>
+				</div>
+  			</div>
+  			<div class="col-md-4">
+  				<div class="card" style="width: 22rem; height: 11rem;">
+				  	<div class="card-body">
+					    <h5 class="card-title">Detailed Place Information</h5>
+					    <p class="card-text">Each listing provides key details such as description, location, timings, contact info, and images. This helps users make informed decisions before visiting.</p>
+				  	</div>
+				</div>
+  			</div>
+  			<div class="col-md-4">
+  				<div class="card" style="width: 22rem; height: 11rem;">
+				  	<div class="card-body">
+					    <h5 class="card-title">Personalized Recommendations</h5>
+					    <p class="card-text">The system suggests places based on user interests and browsing history. This creates a more customized experience and helps users discover hidden gems in Amritsar.</p>
+				  	</div>
+				</div>
+  			</div>
+  		</div>
+
+
+
+  		<div class="row mb-2">
+  			<div class="col-md-4">
+  				<div class="card" style="width: 22rem; height: 11rem;">
+				  	<div class="card-body">
+					    <h5 class="card-title">User Reviews and Ratings</h5>
+					    <p class="card-text">Visitors can rate and review places they’ve visited, helping others make informed decisions. This builds trust and improves the overall quality of recommendations.</p>
+				  	</div>
+				</div>
+  			</div>
+  			<div class="col-md-4">
+  				<div class="card" style="width: 22rem; height: 11rem;">
+				  	<div class="card-body">
+					    <h5 class="card-title">Interactive Map Integration</h5>
+					    <p class="card-text">An integrated map allows users to view locations visually and get directions. This makes navigation in a new city much easier for tourists.</p>
+				  	</div>
+				</div>
+  			</div>
+  			<div class="col-md-4">
+  				<div class="card" style="width: 22rem; height: 11rem;">
+				  	<div class="card-body">
+					    <h5 class="card-title">Secure User Accounts</h5>
+					    <p class="card-text">Users can create accounts, manage their profiles, and save favorite places. This allows a more personalized and secure experience while using the platform.</p>
+				  	</div>
+				</div>
+  			</div>
+  		</div>
+  	</div>
+{% endblock %}		
+	
+

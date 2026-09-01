@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+	<body>
+		<link rel="stylesheet" type="text/css" href='{% static "customcss/transportation.css" %}'>
+
+		{% if error %}
+			<script>
+				alert("{{ error }}")
+			</script>
+		{% endif %}
+		{% if message %}
+			<script>
+				alert("{{ message }}")
+			</script>
+		{% endif %}
+		<div class="container" style="margin-top: 66px; margin-bottom: 66px;">
+		
+		  	<h1 class="hero-text text-center title">Enter Details</h1>
+		  	<div class="row">
+		  		<div class="col-md-2"></div>
+		  		<div class="col-md-8">
+		  			<div class="box">
+			  			<form method="POST">
+					    	{% csrf_token %}
+					    	<input type="text" name="from_location" placeholder="From" class="box-input form-control" value="{% if from_l %} {{ from_l }} {% endif %}" required><br>
+					    	<input type="text" name="to_location" placeholder="To" class="box-input form-control" value="{% if to_l %} {{ to_l }} {% endif %}" required><br>
+					    	<button type="submit" class="btn button search form-control fw-bold">Submit</button>
+					  	</form>
+				  	</div>
+		  		</div>
+		  		<div class="col-md-2"></div>
+		  	</div>		  	
+		
+
+
+		{% if distance %}
+		<div class="transport-card">
+
+    		<!-- LEFT SIDE -->
+		    <div class="transport-left">
+		        <i class="icofont-car-alt-1 icon"></i>
+		        <h3>Transport Suggestion</h3>
+		        <p>We’ve found the best travel option based on your distance.</p>
+		    </div>
+
+    		<!-- RIGHT SIDE -->
+		    <div class="transport-right">
+
+		        <div class="transport-stats">
+
+		            <div class="stat">
+		                <i class="icofont-location-pin"></i>
+		                <div>
+		                    <p class="label">Distance</p>
+		                    <h5>{{ distance }} km</h5>
+		                </div>
+		            </div>
+
+		            <div class="stat">
+		                <i class="icofont-taxi"></i>
+		                <div>
+		                    <p class="label">Suggestion</p>
+		                    <h5>{{ suggestion }}</h5>
+		                </div>
+		            </div>
+
+		            {% if suggestion == "Cab" %}
+		            <div class="stat">
+		                <i class="icofont-wallet"></i>
+		                <div>
+		                    <p class="label">Estimated Fare</p>
+		                    <h5>₹{{ amount }}</h5>
+		                </div>
+		            </div>
+		            {% endif %}
+
+		        </div>
+		        {% if suggestion == "Cab" %}
+		        <div class="tip-box">
+		            💡 Tip: Cabs are comfortable and convenient for medium distances.
+		        </div>
+		        {% endif %}
+
+		        {% if suggestion == "Auto Rickshaw" %}
+		        <div class="tip-box">
+		            💡 Tip: The base fare is typically ranges from &#8377;10 to &#8377;20 per kilomiter.
+		        </div>
+		        {% endif %}
+
+		        {% if suggestion == "Cab" %}
+		        <button class="book-btn" id="pay-btn">
+		            Book Cab →
+		        </button>
+		        {% endif %}
+
+		    </div>
+		</div>
+		{% endif %}
+		
+		</div>
+	</body>
+  <!--Razorpay's Javascript code.-->
+  	<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  	<script>
+	    var options = {
+	      
+	      // Enter the Key ID generated from the Dashboard
+	      key: "{{ razorpay_merchant_key }}", 
+	      
+	      // Amount is in currency subunits.
+	      // Default currency is INR. Hence, 
+	      // 50000 refers to 50000 paise
+	      amount: "{{ razorpay_amount }}", 
+	      currency: "INR",
+	      
+	      // Your/store name.
+	      name: "AmritPath", 
+	      
+	      // Pass the `id` obtained in the response of Step 1
+	      order_id: "{{ razorpay_order_id }}", 
+	      redirect: true,
+	      callback_url: "http://127.0.0.1:8000/paymenthandler/",
+	    }
+	    
+	    // initialise razorpay with the options.
+	    var rzp1 = new Razorpay(options);
+	    
+	    // add event listener to the payment button.
+	    document.getElementById("pay-btn").onclick = function (e) {
+	      rzp1.open({});
+	      e.preventDefault();
+	    };
+
+  	</script>
+
+
+{% endblock %}
+
+
+
+

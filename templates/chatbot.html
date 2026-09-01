@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" type="text/css" href='{% static "customcss/chatbot.css" %}'>
+    <section style="padding-top: 66px;">
+        <div class="container mb-5">
+            <h2 class="hero-text text-center mt-3 mb-4">Tourist Chatbot 🤖</h2>
+            <div id="chatbox" class="chatbox mb-3"></div>
+            <!-- <input type="text" id="userInput" class="chatinput" placeholder="Ask something..."> -->
+            <div class="chat-input-wrapper">
+                <textarea id="userInput" class="chatinput" placeholder="Ask something..." rows="4"></textarea>
+                <i class="icofont-arrow-up send-icon" onclick="sendMessage()"></i>
+                <!-- <button class="btn chatbutton" onclick="sendMessage()">Send</button> -->
+            </div>
+            
+        </div>
+    </section>
+
+
+    
+
+    <script>
+const textarea = document.getElementById("userInput");
+
+// Send on Enter, new line on Shift+Enter
+textarea.addEventListener("keydown", function(e) {
+    if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+    }
+});
+
+function sendMessage() {
+    let message = textarea.value.trim();
+    if (message === "") return;
+
+    fetch(`/chatbot/get-response/?message=${message}`)
+    .then(res => res.json())
+    .then(data => {
+
+        let chatbox = document.getElementById("chatbox");
+
+        chatbox.innerHTML += `<p><b>You:</b> ${message}</p>`;
+
+        if (data.type === "text" || data.type === "paragraph") {
+            chatbox.innerHTML += `<p><b>Bot:</b> ${data.data}</p>`;
+        }
+
+        else if (data.type === "list") {
+            let listHTML = `<p><b>Bot:</b> ${data.title}</p><ul>`;
+            data.data.forEach(item => {
+                listHTML += `<li>${item}</li>`;
+            });
+            if (data.more) {
+                listHTML += `<p>${data.more}</p>`;
+            }
+            chatbox.innerHTML += listHTML;
+        }
+        else if(data.type==="content"){
+            let listHTML = `<p><b>Bot:</b> ${data.data}</p><ul>`;
+            if (data.list) {
+                data.list.forEach(item => {
+                listHTML += `<li>${item}</li>`;
+            });
+            }
+            if (data.more) {
+                listHTML += `<p>${data.more}</p>`;
+            }
+            chatbox.innerHTML += listHTML;
+        }
+
+        chatbox.scrollTop = chatbox.scrollHeight;
+    });
+
+    textarea.value = "";
+}
+</script>
+
+{% endblock %}

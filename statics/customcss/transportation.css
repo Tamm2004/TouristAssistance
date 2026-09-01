@@ -1,0 +1,136 @@
+.hero-text{
+  font-size: 4rem;
+  font-weight: 700;
+  color: #561c24;
+  font-family: 'Brush Script MT', 'Brush Script Std', cursive;
+  letter-spacing: 0.5rem;
+  word-spacing: 0.3rem;
+}
+
+.box-input{
+	width: 100%;
+	background-color: #561c24 ;
+	color: white;
+	border-color:#b0625a !important ; 
+	box-shadow: 2px 2px 2px #b0625a !important;
+}
+
+.box-input::placeholder{
+	background-color: #561c24 !important;
+	color:white !important;
+}
+
+.box-input:focus {
+    background-color: #561c24 !important;
+    color: white !important;
+}
+
+.button{
+	border-color: #561c24 !important;
+	box-shadow:2px 2px 2px #b0625a !important;
+}
+
+.button:hover{
+	transform: translateY(-3PX) !important;
+	transition: all ease 0.3s !important;
+}
+
+input.form-control:-webkit-autofill,
+input.form-control:-webkit-autofill:hover,
+input.form-control:-webkit-autofill:focus,
+input.form-control:-webkit-autofill:active {
+    -webkit-text-fill-color: #ffffff !important;
+    caret-color: #ffffff;
+    transition: background-color 9999s ease-in-out 0s;
+}
+
+
+
+.transport-card {
+    display: flex;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 10px 15px #561c24;
+    background: #fff;
+    margin-top: 80px;
+}
+
+/* LEFT PANEL */
+.transport-left {
+    width: 35%;
+    background: linear-gradient(135deg, #561c24, #7b2d35);
+    color: white;
+    padding: 40px;
+    text-align: center;
+}
+
+.transport-left .icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+    border:none;
+}
+
+.transport-left h3 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* RIGHT PANEL */
+.transport-right {
+    width: 65%;
+    padding: 30px;
+}
+
+/* STATS */
+.transport-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stat i {
+    font-size: 20px;
+    color: #561c24;
+    background: #f3e6e8;
+    padding: 10px;
+    border-radius: 50%;
+}
+.stat h5{
+	color: #561c24;
+}
+.label {
+    font-size: 12px;
+    color: #561c24;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* TIP BOX */
+.tip-box {
+    background: #f8eaea;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    color: #561c24;
+}
+
+/* BUTTON */
+.book-btn {
+    background: #561c24;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.book-btn:hover {
+    background: #7b2d35;
+}

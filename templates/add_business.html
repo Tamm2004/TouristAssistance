@@ -1,0 +1,955 @@
+{% extends 'sidebar.html' %}
+{% load static %}
+{% block content %}
+	<link rel="stylesheet" type="text/css" href='{% static "customcss/dashboard.css" %}'>
+	<script src='{%static "js/bootstrap.bundle.min.js" %}'></script>
+
+{% if message %}
+    <div class="alert alert-success">{{ message }}</div>
+{% endif %}
+
+
+
+
+{% if call == "food" %}
+	
+	<div class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 90vh;">
+		<div class="alert alert-info" style="width: 700px; border-radius: 15px; ">
+	    Adding food to: <strong>{{ selected_shop.title }}</strong>
+		</div>
+		<div class="add-business-card p-4 mb-1 mt-1 ">	
+			<h2 class="text-center mb-4 hero-heading">Add Business</h2>
+		    <hr style="opacity: 1">
+		    <form method="POST" enctype="multipart/form-data" novalidate>
+		        {% csrf_token %}
+				<input type="hidden" name="business_type" id="business_type" value="food">
+
+				<div id="food_fields" style="display:;">
+                	<h5 class="section-heading">Food Details</h5>
+                
+                	<div class="dropdown mb-2">
+        				<button id="foodDropdownBtn" class="btn txt dropdown-toggle w-100" type="button" data-bs-toggle="dropdown">
+            				-- Select Food (or add new) --
+       					</button>
+
+				        <ul class="dropdown-menu w-100 custom-dropdown" id="foodDropdownMenu">
+				            {% for food in foods_database %}
+				                <li>
+				                    <a class="dropdown-item food-option"
+				                       href="#"
+				                       data-id="{{ food.id }}"
+				                       data-title="{{ food.title }}"
+				                       data-description="{{ food.description }}">
+				                        {{ food.title }}
+				                    </a>
+				                </li>
+				            {% endfor %}
+				            <li>
+				                <a class="dropdown-item food-option" href="#" data-id="new">
+				                    + Add New Food
+				                </a>
+				            </li>
+				        </ul>
+    				</div>
+    
+    				<input type="hidden" name="existing_food_id" id="existing_food_id">
+					<div class="row">
+			        	<div class="col-md-6">
+							<input type="text" name="food_title" id="food_title" placeholder="Food Title" class="form-control txt mb-2" style="display:none;">
+                		</div>
+                		<div class="col-md-6">
+                			<input type="file" name="food_image" class="form-control txt mb-2" style="display:none;">
+                		</div>
+                	</div>
+                	<textarea name="food_description" placeholder="Description" class="form-control txt mb-3" style="display:none;"></textarea>
+            	</div>
+
+	            <input type="hidden" name="shop_id" placeholder="Shop Id" class="form-control txt mb-2" value="{{shop_id}}">
+
+	  
+
+            	<button type="submit" class="btn theme-btn w-40 mt-2">Add Business</button>
+
+			</form>
+		</div>
+	</div>
+
+{% elif call == "product" %}
+	
+	<div class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 90vh;">
+		<div class="alert alert-info" style="width: 700px; border-radius: 15px; ">
+	    Adding item to: <strong>{{ selected_shop.title }}</strong>
+		</div>
+		<div class="add-business-card p-4 mb-5 mt-1 ">	
+			<h2 class="text-center mb-4 hero-heading">Add Business</h2>
+		    <hr style="opacity: 1">
+		    <form method="POST" enctype="multipart/form-data" novalidate>
+		        {% csrf_token %}
+				<input type="hidden" name="business_type" id="business_type" value="product">
+
+				<div id="product_fields" style="display:;">
+                	<h5 class="section-heading">Product Details</h5>
+                	<div class="dropdown mb-2">
+				        <button id="productDropdownBtn" class="btn txt dropdown-toggle w-100" type="button" data-bs-toggle="dropdown">
+				            -- Select Product (or add new) --
+				        </button>
+
+				        <ul class="dropdown-menu w-100 custom-dropdown">
+				            {% for product in products_database %}
+				                <li>
+				                    <a class="dropdown-item product-option"
+				                       href="#"
+				                       data-id="{{ product.id }}"
+				                       data-title="{{ product.title }}"
+				                       data-description="{{ product.description }}">
+				                        {{ product.title }}
+				                    </a>
+				                </li>
+				            {% endfor %}
+				            <li>
+				                <a class="dropdown-item product-option" href="#" data-id="new">
+				                    + Add New Product
+				                </a>
+				            </li>
+				        </ul>
+   					</div>    
+   					<input type="hidden" name="existing_product_id" id="existing_product_id">
+    
+    				
+					<div class="row">
+			        	<div class="col-md-6">
+							<input type="text" name="product_title" id="product_title" placeholder="Product Title" class="form-control txt mb-2" style="display:none;">
+                		</div>
+                		<div class="col-md-6">
+                			<input type="file" name="product_image" class="form-control txt mb-2" style="display:none;">
+                		</div>
+                	</div>
+                	<textarea name="product_description" placeholder="Description" class="form-control txt mb-3" style="display:none;"></textarea>
+            	</div>
+            	<input type="hidden" name="shop_id" placeholder="Shop Id" class="form-control txt mb-2" value="{{shop_id}}">
+            	<button type="submit" class="btn theme-btn w-40 mt-2">Add Business</button>
+
+			</form>
+		</div>
+	</div>
+
+	
+
+{% else %}
+
+	<div class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 90vh;">
+		{% if selected_restaurant %}
+				<div class="alert alert-info" style="width: 700px; border-radius: 15px; ">
+				    Adding&nbsp;<strong>{{ selected_restaurant.title }}</strong>&nbsp;branch
+				</div>			
+			{% endif %}
+
+			{% if selected_hotel %}
+				<div class="alert alert-info" style="width: 700px; border-radius: 15px; ">
+				    Adding&nbsp;<strong>{{ selected_hotel.title }}</strong>&nbsp;branch
+				</div>
+			{% endif %}
+		<div class="add-business-card p-4 mb-5 mt-1 ">	
+			<h2 class="text-center mb-4 hero-heading">Add Business</h2>
+		    <hr style="opacity: 1">
+		    <form method="POST" enctype="multipart/form-data" novalidate>
+		        {% csrf_token %}
+		        <label class="form-label">Business Type</label>
+		        <div class="dropdown mb-3">
+					<button class="btn txt dropdown-toggle w-100" type="button" data-bs-toggle="dropdown">
+					        Select Business Type
+				    </button>
+
+					<ul class="dropdown-menu w-100 custom-dropdown">
+					    <li><a class="dropdown-item" href="#" data-value="food">Food</a></li>
+					    <li><a class="dropdown-item" href="#" data-value="product">Product</a></li>
+				        <li><a class="dropdown-item" href="#" data-value="hotel">Hotel</a></li>
+				        <li><a class="dropdown-item" href="#" data-value="restaurant">Restaurant</a></li>
+
+				    </ul>
+				</div>
+				<input type="hidden" name="business_type" id="business_type" value="">
+
+
+				<div id="food_fields" style="display:none;">
+                	<h5 class="section-heading">Food Details</h5>
+                
+                	<div class="dropdown mb-2">
+        				<button id="foodDropdownBtn" class="btn txt dropdown-toggle w-100" type="button" data-bs-toggle="dropdown">
+            				-- Select Food (or add new) --
+       					</button>
+
+				        <ul class="dropdown-menu w-100 custom-dropdown" id="foodDropdownMenu">
+				            {% for food in foods_database %}
+				                <li>
+				                    <a class="dropdown-item food-option"
+				                       href="#"
+				                       data-id="{{ food.id }}"
+				                       data-title="{{ food.title }}"
+				                       data-description="{{ food.description }}">
+				                        {{ food.title }}
+				                    </a>
+				                </li>
+				            {% endfor %}
+				            <li>
+				                <a class="dropdown-item food-option" href="#" data-id="new">
+				                    + Add New Food
+				                </a>
+				            </li>
+				        </ul>
+    				</div>
+
+    
+    				<input type="hidden" name="existing_food_id" id="existing_food_id">
+					<div class="row">
+			        	<div class="col-md-6">
+							<input type="text" name="food_title" id="food_title" placeholder="Food Title" class="form-control txt mb-2" style="display:none;">
+                		</div>
+                		<div class="col-md-6">
+                			<input type="file" name="food_image" class="form-control txt mb-2" style="display:none;">
+                		</div>
+                	</div>
+                	<textarea name="food_description" placeholder="Description" class="form-control txt mb-3" style="display:none;"></textarea>
+            	</div>
+
+
+            	<div id="product_fields" style="display:none;">
+                	<h5 class="section-heading">Product Details</h5>
+                	<div class="dropdown mb-2">
+				        <button id="productDropdownBtn" class="btn txt dropdown-toggle w-100" type="button" data-bs-toggle="dropdown">
+				            -- Select Product (or add new) --
+				        </button>
+
+				        <ul class="dropdown-menu w-100 custom-dropdown">
+				            {% for product in products_database %}
+				                <li>
+				                    <a class="dropdown-item product-option"
+				                       href="#"
+				                       data-id="{{ product.id }}"
+				                       data-title="{{ product.title }}"
+				                       data-description="{{ product.description }}">
+				                        {{ product.title }}
+				                    </a>
+				                </li>
+				            {% endfor %}
+				            <li>
+				                <a class="dropdown-item product-option" href="#" data-id="new">
+				                    + Add New Product
+				                </a>
+				            </li>
+				        </ul>
+   					</div>    
+   					<input type="hidden" name="existing_product_id" id="existing_product_id">					
+					<div class="row">
+			        	<div class="col-md-6">
+							<input type="text" name="product_title" id="product_title" placeholder="Product Title" class="form-control txt mb-2" style="display:none;">
+                		</div>
+                		<div class="col-md-6">
+                			<input type="file" name="product_image" class="form-control txt mb-2" style="display:none;">
+                		</div>
+                	</div>
+                	<textarea name="product_description" placeholder="Description" class="form-control txt mb-3" style="display:none;"></textarea>
+            	</div>
+
+
+            	<div id="shop_section" style="display:none;">
+				    <h5 class="section-heading">Select Shop</h5>
+
+				    <div class="dropdown mb-2">
+				        <button id="shopDropdownBtn" class="btn txt dropdown-toggle w-100" type="button" data-bs-toggle="dropdown">
+				            -- Select Shop (or add new) --
+				        </button>
+
+				        <ul class="dropdown-menu w-100 custom-dropdown">
+				            {% for shop in user_shops %}
+				                <li>
+				                    <a class="dropdown-item shop-option"
+				                       href="#"
+				                       data-id="{{ shop.id }}"
+				                       data-title="{{ shop.title }}">
+				                        {{ shop.title }}
+				                    </a>
+				                </li>
+				            {% endfor %}
+				            <li>
+				                <a class="dropdown-item shop-option" href="#" data-id="new">
+				                    + Add New Shop
+				                </a>
+				            </li>
+				        </ul>
+				    </div>
+
+				    <input type="hidden" name="existing_shop_id" id="existing_shop_id">
+
+				    <!-- NEW SHOP FIELDS -->
+				    <div id="shop_fields" style="display:none;">
+				        <div class="row">
+				            <div class="col-md-6">
+				                <input type="text" name="shop_title" placeholder="Shop Title" class="form-control txt mb-2">
+				            </div>
+				            <div class="col-md-6">
+				                <input type="file" name="shop_image" class="form-control txt mb-2">
+				            </div>
+				        </div>
+
+				        <textarea name="shop_address" placeholder="Address" class="form-control txt mb-2"></textarea>
+				        <textarea name="shop_description" placeholder="Description" class="form-control txt mb-3"></textarea>
+
+				        <label class="text-white">Upload Gallery Images</label>
+				        <input type="file" name="shop_gallery" id="shop_gallery" class="form-control txt mb-2" multiple>
+
+				        <div id="shop_preview_container" class="d-flex flex-wrap gap-2 mt-2"></div>
+				    </div>
+				</div>
+
+
+				<div id="hotel_fields" style="display:none;" class="hotel-section">
+
+				    <h5 class="section-heading">Hotel Details</h5>
+
+				    <!-- HOTEL DROPDOWN -->
+				    <div class="dropdown mb-2">
+				        <button id="hotelDropdownBtn"
+				                class="btn txt dropdown-toggle w-100"
+				                type="button"
+				                data-bs-toggle="dropdown">
+
+				            {% if selected_hotel %}
+						        {{ selected_hotel.title }}
+						    {% else %}
+						        -- Select Hotel (or add new) --
+						    {% endif %}
+				        </button>
+
+				        <ul class="dropdown-menu w-100 custom-dropdown">
+
+				            {% for hotel in hotels_database %}
+				                <li>
+				                    <a class="dropdown-item hotel-option"
+				                       href="#"
+				                       data-id="{{ hotel.id }}">
+				                        {{ hotel.title }}
+				                    </a>
+				                </li>
+				            {% endfor %}
+
+				            <li>
+				                <a class="dropdown-item hotel-option"
+				                   href="#"
+				                   data-id="new">
+				                    + Add New Hotel
+				                </a>
+				            </li>
+
+				        </ul>
+				    </div>
+
+				    <input type="hidden" name="existing_hotel_id" id="existing_hotel_id" value="{{ selected_hotel_id|default:'' }}">
+
+
+				    <!-- NEW HOTEL FORM -->
+				    <div id="new_hotel_fields" style="display:none;">
+
+				        <div class="row">
+				            <div class="col-md-6">
+				                <input type="text"
+				                       name="hotel_title"
+				                       placeholder="Hotel Title"
+				                       class="form-control txt mb-2">
+				            </div>
+
+				            <div class="col-md-6">
+				                <input type="file"
+				                       name="hotel_image"
+				                       class="form-control txt mb-3">
+				            </div>
+				        </div>
+
+				        <textarea name="hotel_address"
+				                  placeholder="Hotel Address"
+				                  class="form-control txt mb-2"></textarea>
+
+				        <textarea name="hotel_description"
+				                  placeholder="Description"
+				                  class="form-control txt mb-3"></textarea>
+
+				        <label class="text-white">Upload Gallery Images</label>
+
+				        <input type="file"
+				               name="hotel_gallery"
+				               id="hotel_gallery"
+				               class="form-control txt mb-2"
+				               multiple>
+
+				        <div id="hotel_preview_container"
+				             class="d-flex flex-wrap gap-2 mt-2"></div>
+
+				    </div>
+
+				    <!-- BRANCH FORM -->
+				    <div id="hotel_branch_fields" style="{% if selected_hotel_id %}display:block;{% else %}display:none;{% endif %}">
+
+				        <h6 class="text-white mt-3">Branch Details</h6>
+
+				        <input type="text"
+				               name="hotel_branch_name"
+				               placeholder="Branch Name"
+				               class="form-control txt mb-2">
+
+				        <textarea name="hotel_branch_address"
+				                  placeholder="Branch Address"
+				                  class="form-control txt mb-2"></textarea>
+
+				        <input type="file"
+				               name="hotel_branch_image"
+				               class="form-control txt mb-2">
+
+				        <label class="text-white">Upload Branch Gallery</label>
+						<input type="file" name="hotel_branch_gallery" id="hotel_branch_gallery" class="form-control txt mb-2" multiple>
+						<div id="hotel_branch_preview_container" class="d-flex flex-wrap gap-2 mt-2"></div>
+
+				    </div>
+
+				</div>
+
+				
+
+				<div id="restaurant_fields" style="display:none;" class="restaurant-section">
+
+				    <h5 class="section-heading">Restaurant Details</h5>
+
+				    <!-- DROPDOWN -->
+				    <div class="dropdown mb-2">
+
+				        <button id="restaurantDropdownBtn"
+				                class="btn txt dropdown-toggle w-100"
+				                type="button"
+				                data-bs-toggle="dropdown">
+
+				            {% if selected_restaurant %}
+						        {{ selected_restaurant.title }}
+						    {% else %}
+						        -- Select Restaurant (or add new) --
+						    {% endif %}
+				        </button>
+
+				        <ul class="dropdown-menu w-100 custom-dropdown">
+
+				            {% for restaurant in restaurants_database %}
+				                <li>
+				                    <a class="dropdown-item restaurant-option"
+				                       href="#"
+				                       data-id="{{ restaurant.id }}">
+				                        {{ restaurant.title }}
+				                    </a>
+				                </li>
+				            {% endfor %}
+
+				            <li>
+				                <a class="dropdown-item restaurant-option"
+				                   href="#"
+				                   data-id="new">
+				                    + Add New Restaurant
+				                </a>
+				            </li>
+
+				        </ul>
+				    </div>
+
+				    <input type="hidden" name="existing_restaurant_id" id="existing_restaurant_id" value="{{ selected_restaurant_id|default:'' }}">
+
+
+				    <!-- NEW RESTAURANT -->
+				    <div id="new_restaurant_fields" style="display:none;">
+
+				        <div class="row">
+				            <div class="col-md-6">
+				                <input type="text"
+				                       name="restaurant_title"
+				                       placeholder="Restaurant Title"
+				                       class="form-control txt mb-2">
+				            </div>
+
+				            <div class="col-md-6">
+				                <input type="file"
+				                       name="restaurant_image"
+				                       class="form-control txt mb-3">
+				            </div>
+				        </div>
+
+				        <textarea name="restaurant_address"
+				                  placeholder="Restaurant Address"
+				                  class="form-control txt mb-2"></textarea>
+
+				        <textarea name="restaurant_description"
+				                  placeholder="Description"
+				                  class="form-control txt mb-3"></textarea>
+
+				        <label class="text-white">Upload Gallery Images</label>
+
+				        <input type="file"
+				               name="restaurant_gallery"
+				               id="restaurant_gallery"
+				               class="form-control txt mb-2"
+				               multiple>
+
+				        <div id="restaurant_preview_container"
+				             class="d-flex flex-wrap gap-2 mt-2"></div>
+
+				    </div>
+
+				    <div id="restaurant_branch_fields" style="{% if selected_restaurant_id %}display:block;{% else %}display:none;{% endif %}">
+
+				        <h6 class="text-white mt-3">Branch Details</h6>
+
+				        <input type="text"
+				               name="restaurant_branch_name"
+				               placeholder="Branch Name"
+				               class="form-control txt mb-2">
+
+				        <textarea name="restaurant_branch_address"
+				                  placeholder="Branch Address"
+				                  class="form-control txt mb-2"></textarea>
+
+				        <input type="file"
+				               name="restaurant_branch_image"
+				               class="form-control txt mb-2">
+
+				        <label class="text-white">Upload Branch Gallery</label>
+
+						<input type="file"
+						       name="restaurant_branch_gallery"
+						       id="restaurant_branch_gallery"
+						       class="form-control txt mb-2"
+						       multiple>
+
+						<div id="restaurant_branch_preview_container"
+						     class="d-flex flex-wrap gap-2 mt-2"></div>
+
+				    </div>
+
+				</div>
+
+
+            	<button type="submit" class="btn theme-btn w-40 mt-2">Add Business</button>
+
+			</form>
+		</div>
+	</div>
+{% endif %}
+	<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+
+
+	
+
+    const form = document.querySelector("form");
+
+    // ================= BUSINESS TYPE =================
+    const typeItems = document.querySelectorAll(".dropdown-menu .dropdown-item[data-value]");
+    const typeBtn = document.querySelector(".dropdown button");
+    const businessTypeInput = document.getElementById("business_type");
+
+    const foodFields = document.getElementById("food_fields");
+    const productFields = document.getElementById("product_fields");
+    const shopFields = document.getElementById("shop_fields");
+    const hotelFields = document.getElementById("hotel_fields");
+    const restaurantFields = document.getElementById("restaurant_fields");
+
+
+    function hideAllSections() {
+        foodFields.style.display = "none";
+        productFields.style.display = "none";
+        shopFields.style.display = "none";
+        hotelFields.style.display = "none";
+        restaurantFields.style.display = "none";
+
+    }
+
+    const selectedBusinessType = "{{ selected_business_type|default:'' }}";
+	const selectedHotelId = "{{ selected_hotel_id|default:'' }}";
+	const selectedRestaurantId = "{{ selected_restaurant_id|default:'' }}";
+
+	if (selectedBusinessType === "hotel" && selectedHotelId) {
+	    businessTypeInput.value = "hotel";
+
+	    if (typeBtn) {
+	        typeBtn.textContent = "Hotel";
+	    }
+
+	    hideAllSections();
+
+	    hotelFields.style.display = "block";
+	    shopSection.style.display = "none";
+
+	    existingHotelId.value = selectedHotelId;
+
+	    newHotelFields.style.display = "none";
+	    hotelBranchFields.style.display = "block";
+
+	    hotelBtn.textContent = "-- Existing Hotel Selected --";
+	}
+
+	if (selectedBusinessType === "restaurant" && selectedRestaurantId) {
+	    businessTypeInput.value = "restaurant";
+
+	    if (typeBtn) {
+	        typeBtn.textContent = "Restaurant";
+	    }
+
+	    hideAllSections();
+
+	    restaurantFields.style.display = "block";
+	    shopSection.style.display = "none";
+
+	    existingRestaurantId.value = selectedRestaurantId;
+
+	    newRestaurantFields.style.display = "none";
+	    restaurantBranchFields.style.display = "block";
+
+	    restaurantBtn.textContent = "-- Existing Restaurant Selected --";
+	}
+
+	
+
+    typeItems.forEach(item => {
+        item.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const value = this.getAttribute("data-value");
+            typeBtn.textContent = this.textContent;
+            businessTypeInput.value = value;
+
+            hideAllSections();
+
+            if (value === "hotel") {
+                hotelFields.style.display = "block";
+                shopSection.style.display = "none";
+            } 
+            else if (value === "restaurant") {
+                restaurantFields.style.display = "block";
+                shopSection.style.display = "none";
+            }
+            else if (value === "food") {
+                foodFields.style.display = "block";
+                shopSection.style.display = "block";
+            } 
+            else if (value === "product") {
+                productFields.style.display = "block";
+                shopSection.style.display = "block";
+            }
+        });
+    });
+
+    // ================= FOOD =================
+    const foodItems = document.querySelectorAll(".food-option");
+    const foodBtn = document.getElementById("foodDropdownBtn");
+
+    const foodTitle = document.getElementById("food_title");
+    const foodDesc = document.querySelector('textarea[name="food_description"]');
+    const foodImage = document.querySelector('input[name="food_image"]');
+    const existingFoodId = document.getElementById("existing_food_id");
+
+    function hideFoodInputs() {
+        foodTitle.style.display = "none";
+        foodDesc.style.display = "none";
+        foodImage.style.display = "none";
+    }
+
+    foodItems.forEach(item => {
+        item.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const id = this.getAttribute("data-id");
+            foodBtn.textContent = this.textContent;
+
+            if (id === "new") {
+                foodTitle.style.display = "block";
+                foodDesc.style.display = "block";
+                foodImage.style.display = "block";
+                existingFoodId.value = "";
+            } else {
+                hideFoodInputs();
+                existingFoodId.value = id;
+            }
+        });
+    });
+
+    // ================= PRODUCT =================
+    const productItems = document.querySelectorAll(".product-option");
+    const productBtn = document.getElementById("productDropdownBtn");
+
+    const productTitle = document.getElementById("product_title");
+    const productDesc = document.querySelector('textarea[name="product_description"]');
+    const productImage = document.querySelector('input[name="product_image"]');
+    const existingProductId = document.getElementById("existing_product_id");
+
+    function hideProductInputs() {
+        productTitle.style.display = "none";
+        productDesc.style.display = "none";
+        productImage.style.display = "none";
+    }
+
+    productItems.forEach(item => {
+        item.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const id = this.getAttribute("data-id");
+            productBtn.textContent = this.textContent;
+
+            if (id === "new") {
+                productTitle.style.display = "block";
+                productDesc.style.display = "block";
+                productImage.style.display = "block";
+                existingProductId.value = "";
+            } else {
+                hideProductInputs();
+                existingProductId.value = id;
+            }
+        });
+    });
+
+
+    // ================= SHOP =================
+	const shopItems = document.querySelectorAll(".shop-option");
+	const shopBtn = document.getElementById("shopDropdownBtn");
+	const existingShopId = document.getElementById("existing_shop_id");
+	const shopFieldsDiv = document.getElementById("shop_fields");
+	const shopSection = document.getElementById("shop_section");
+
+	function hideShopInputs() {
+	    shopFieldsDiv.style.display = "none";
+	}
+
+	shopItems.forEach(item => {
+	    item.addEventListener("click", function (e) {
+	        e.preventDefault();
+
+	        const id = this.getAttribute("data-id");
+	        shopBtn.textContent = this.textContent;
+
+	        if (id === "new") {
+	            shopFieldsDiv.style.display = "block";
+	            existingShopId.value = "";
+	        } else {
+	            hideShopInputs();
+	            existingShopId.value = id;
+	        }
+	    });
+	});
+
+
+    // ================= IMAGE PREVIEW + DELETE =================
+    function previewImages(input, containerId) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = "";
+
+        let filesArray = Array.from(input.files);
+
+        filesArray.forEach((file, index) => {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                const wrapper = document.createElement("div");
+                wrapper.style.position = "relative";
+
+                const img = document.createElement("img");
+                img.src = e.target.result;
+                img.style.width = "80px";
+                img.style.height = "80px";
+                img.style.objectFit = "cover";
+                img.classList.add("rounded");
+
+                const removeBtn = document.createElement("span");
+                removeBtn.innerHTML = "❌";
+                removeBtn.style.position = "absolute";
+                removeBtn.style.top = "-8px";
+                removeBtn.style.right = "-8px";
+                removeBtn.style.cursor = "pointer";
+
+                removeBtn.onclick = function () {
+                    filesArray.splice(index, 1);
+
+                    const dt = new DataTransfer();
+                    filesArray.forEach(f => dt.items.add(f));
+                    input.files = dt.files;
+
+                    previewImages(input, containerId);
+                };
+
+                wrapper.appendChild(img);
+                wrapper.appendChild(removeBtn);
+                container.appendChild(wrapper);
+            };
+
+            reader.readAsDataURL(file);
+        });
+    }
+
+ //    function attachPreview(inputId, containerId) {
+	//     const input = document.getElementById(inputId);
+	//     const container = document.getElementById(containerId);
+
+	//     if (!input || !container) return;
+
+	//     input.addEventListener("change", function () {
+	//         previewImages(this, containerId);
+	//     });
+	// }
+
+	// attachPreview("shop_gallery", "shop_preview_container");
+	// attachPreview("hotel_gallery", "hotel_preview_container");
+	// attachPreview("restaurant_gallery", "restaurant_preview_container");
+	// attachPreview("hotel_branch_gallery", "hotel_branch_preview_container");
+	// attachPreview("restaurant_branch_gallery", "restaurant_branch_preview_container");
+
+
+    document.getElementById("shop_gallery").addEventListener("change", function () {
+        previewImages(this, "shop_preview_container");
+    });
+
+    document.getElementById("hotel_gallery").addEventListener("change", function () {
+        previewImages(this, "hotel_preview_container");
+    });
+    document.getElementById("restaurant_gallery").addEventListener("change", function () {
+        previewImages(this, "restaurant_preview_container");
+    });
+
+    document.getElementById("hotel_branch_gallery").addEventListener("change", function () {
+	    previewImages(this, "hotel_branch_preview_container");
+	});
+
+	document.getElementById("restaurant_branch_gallery").addEventListener("change", function () {
+	    previewImages(this, "restaurant_branch_preview_container");
+	});
+
+
+    // ================= VALIDATION =================
+    function validateVisibleFields() {
+        const fields = form.querySelectorAll("input, textarea, select");
+
+        for (let field of fields) {
+
+            if (field.offsetParent === null) continue; // hidden
+            if (field.type === "hidden") continue;
+            if (field.type === "file" && field.multiple) continue; // gallery skip
+
+            if (!field.value || field.value.trim() === "") {
+                alert("All visible fields are required except gallery");
+                field.focus();
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    // ================= HOTEL =================
+
+	const hotelItems = document.querySelectorAll(".hotel-option");
+	const hotelBtn = document.getElementById("hotelDropdownBtn");
+
+	const existingHotelId = document.getElementById("existing_hotel_id");
+
+	const newHotelFields = document.getElementById("new_hotel_fields");
+	const hotelBranchFields = document.getElementById("hotel_branch_fields");
+
+	hotelItems.forEach(item => {
+
+	    item.addEventListener("click", function(e){
+
+	        e.preventDefault();
+
+	        const id = this.getAttribute("data-id");
+
+	        hotelBtn.textContent = this.textContent;
+
+	        if(id === "new"){
+
+	            existingHotelId.value = "";
+
+	            newHotelFields.style.display = "block";
+	            hotelBranchFields.style.display = "none";
+	        }
+
+	        else{
+
+	            existingHotelId.value = id;
+
+	            newHotelFields.style.display = "none";
+	            hotelBranchFields.style.display = "block";
+	        }
+
+	    });
+
+	});
+
+
+	// ================= RESTAURANT =================
+
+	const restaurantItems = document.querySelectorAll(".restaurant-option");
+
+	const restaurantBtn = document.getElementById("restaurantDropdownBtn");
+
+	const existingRestaurantId = document.getElementById("existing_restaurant_id");
+
+	const newRestaurantFields = document.getElementById("new_restaurant_fields");
+
+	const restaurantBranchFields = document.getElementById("restaurant_branch_fields");
+
+	restaurantItems.forEach(item => {
+
+	    item.addEventListener("click", function(e){
+
+	        e.preventDefault();
+
+	        const id = this.getAttribute("data-id");
+
+	        restaurantBtn.textContent = this.textContent;
+
+	        if(id === "new"){
+
+	            existingRestaurantId.value = "";
+
+	            newRestaurantFields.style.display = "block";
+	            restaurantBranchFields.style.display = "none";
+	        }
+
+	        else{
+
+	            existingRestaurantId.value = id;
+
+	            newRestaurantFields.style.display = "none";
+	            restaurantBranchFields.style.display = "block";
+	        }
+
+	    });
+
+	});
+
+
+
+
+
+
+    // ================= FORM SUBMIT =================
+    form.addEventListener("submit", function (e) {
+
+        if (!validateVisibleFields()) {
+            e.preventDefault(); // ❗ only stop if invalid
+        }
+
+        // ✅ otherwise let form submit normally → Django redirect works
+    });
+
+
+});
+</script>
+	
+{% endblock %}
+
+
+
+
+

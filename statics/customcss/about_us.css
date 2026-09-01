@@ -1,0 +1,132 @@
+
+.about-head{
+	background-image: url('/static/photos/about_us_background.jpg');
+	height: 200px;
+	background-size: cover;
+	background-position: center;
+    background-repeat: no-repeat;
+    /*position:relative;
+    top:100px;*/
+    margin-top: 66px;
+}
+.about-head-heading{
+	color:#561c24;
+	font-family: 'Brush Script MT', 'Brush Script Std', cursive;
+	font-size:3rem;
+}
+.about-head-text a{
+	color: #561c24;
+	text-decoration:none;
+	font-weight:bold;
+}
+.about-head-text a:hover{
+	color:#561c24;
+}
+.about-head-text span{
+	font-weight:bold;
+}
+.heading{
+	color:#561c24;
+	font-size:3rem;
+}
+.text{
+	background-color:#561c24;
+	color:white;
+	text-align:justify;
+}
+.mission-text{
+	background-color: #e8d8c4;
+	border: 1px solid #561c24;
+	box-shadow: 5px 5px 5px #561c24;
+}
+.mission-text p{
+	color:#561c24;
+}
+.our-vision{
+	background-image:url("https://t4.ftcdn.net/jpg/02/90/51/01/360_F_290510160_IPHX2vCxkyuCIMuaOD0l0loKVETevAY3.jpg");
+	height: 20rem;
+	background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.vision-text{
+	color:#561c24;
+	text-align:justify;
+}
+.what-we-provide{
+	background-color:#561c24;
+	color:white;
+}
+.what-we-provide-heading{
+	font-size: 3rem;
+}
+.what-we-provide-text{
+	background-color: #e8d8c4;
+	width:80%;
+	height:100px;
+	border-radius:20px;
+	border: 1px solid #561c24;
+	box-shadow:10px 10px 5px #e8d8c4;
+	cursor:pointer;
+}
+.what-we-provide-text p{
+	color: #561c24;
+	text-align:justify;
+}
+.what-we-provide-text:hover{
+	transform: translateY(-5PX) !important;
+	transition: all ease 0.3s !important;
+}
+.heading-text{
+	color:#561c24;
+}
+.card{
+	background-color:#e8d8c4;
+	border-radius:20px;
+	border: 1px solid #561c24;
+	box-shadow: 7px 7px 5px #561c24;
+  	color: #561c24;
+  	height: 400px;
+}
+.card-img-top{
+	border-radius:50%;
+}
+.card-text{
+	color:#561c24;
+}
+.card-button{
+  color: #561c24;
+}
+.card-button:hover{
+  font-weight: bold;
+  color: #561c24;
+}
+
+/*.contact-us{
+	background-image:url('/static/photos/contact_us5.webp');
+	height: 20rem;
+	background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}*/
+
+.get-in-touch-text{
+	color: #561c24;
+}
+.get-in-touch-text a{
+	color: #561c24;
+	font-weight: bold;
+}
+.get-in-touch-text a:hover{
+	color: #561c24;
+	font-weight: bold;
+}
+.ending{
+	background-color: #e8d8c4;
+	/*border: 1px solid #561c24;*/
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+}
+.ending p{
+	color: #561c24;
+}

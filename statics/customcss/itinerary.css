@@ -1,0 +1,160 @@
+.hero-title {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #561c24;
+  font-family: 'Brush Script MT', 'Brush Script Std', cursive;
+  letter-spacing: 0.5rem;
+  word-spacing: 0.3rem;
+}
+
+.card{
+	background-color: #b0625a;
+	color: white;
+	border-radius: 20px;
+	box-shadow: 5px 5px 5px #561c24;
+}
+.card-title{
+	font-weight: bold;
+	font-size: 2rem;
+}
+.button{
+	background-color: #561c24;
+	color:white;
+	font-weight: bold;
+	box-shadow: 3px 3px 3px white;
+	
+}
+.button:hover{
+	background-color: white;
+	color: #561c24;
+	border: 1px solid #561c24;
+}
+
+
+
+
+
+
+
+.day-card {
+    display: flex;
+    margin-bottom: 30px;
+   
+}
+
+.day-label {
+    background-color: #561c24;
+    color: white;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    padding: 20px 12px;
+    font-weight: bold;
+    border-radius:  0 12px 12px 0;
+    text-align: center;
+    letter-spacing: 2px;
+    
+}
+
+.content {
+    background-color: #b0625a;
+    padding: 20px;
+    width: 100%;
+    border-radius: 0 12px 12px 0;
+    color: white;
+}
+
+.header {
+    display: flex;
+    font-weight: bold;
+    margin-bottom: 12px;
+    border-bottom: 2px solid rgba(255,255,255,0.4);
+    padding-bottom: 8px;
+}
+
+.time-title {
+    width: 200px;
+    font-size: 1.1rem;
+}
+
+.activity-title {
+    flex: 1;
+    font-size: 1.2rem;
+}
+
+.itinerary-row {
+    display: flex;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+.itinerary-row:last-child {
+    border-bottom: none;
+}
+
+.itinerary-row:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.time {
+    width: 200px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.activity {
+    flex: 1;
+    color: #fbeaea;
+}
+
+.itinerary-section {
+    display: none;
+}
+
+/*.note-title{
+	background-color: #561c24;
+	color: white;
+	padding: 10px 20px;
+	font-weight: bold;
+	border-radius: 12px 12px 0px 0px;
+	font-size: 1.5rem;
+}
+
+.points-to-remember ul{
+	border:1px solid #561c24;
+	border-radius: 0px 0px 12px 12px;
+}
+
+.points-to-remember ul li{
+	padding: 10px 5px;
+}*/
+
+.note-title {
+	background-color: #561c24;
+	color: white;
+	padding: 10px 20px;
+	font-weight: bold;
+	border-radius: 12px 12px 0px 0px;
+	font-size: 1.5rem;
+}
+
+.points-to-remember ul {
+	border: 1px solid #561c24;
+	border-radius: 0px 0px 12px 12px;
+	margin: 0;
+	padding: 0;
+	list-style-position: inside;
+}
+
+/* Each list item */
+.points-to-remember ul li {
+	padding: 12px 10px;
+	border-bottom: 1px solid #561c24; /* separator line */
+}
+
+/* Remove last line */
+.points-to-remember ul li:last-child {
+	border-bottom: none;
+}
+
